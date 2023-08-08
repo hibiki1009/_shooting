@@ -5,7 +5,7 @@
 
 Bullet::Bullet()
 {
-	player = new Player;
+	/*player = new Player;*/
 	firing = FALSE;
 	bullet_move = FALSE;
 
@@ -73,10 +73,10 @@ void Bullet::Bullet_Firing()
 	{
 		bullet_move = FALSE;
 	}
-	if (bullet_move == FALSE)
-	{
-		location = player->GetLocation();
-	}
+	//if (bullet_move == FALSE)
+	//{
+	//	/*location = player->GetLocation();*/
+	//}
 }
 
 void Bullet::Update()

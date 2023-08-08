@@ -3,7 +3,7 @@
 #include"Player.h"
 
 typedef struct Bullet_Vector {
-	float x, y, z;
+	float x, y;
 }B_Vector;
 
 class Bullet:public SphereCollider
@@ -15,13 +15,19 @@ private:
 		bool firing;
 		bool bullet_move;
 		int move;
-		int test1;
+
+		/*テスト用*/
+        int test1;
+		/*テスト用*/
+		
+		int damage;
+		float speed;				// スピード
 
 		B_Vector B_pos;			// 弾の位置構造体
+		/*Player* player;*/
 public:
-	int damage;
-	float speed;				// スピード
-	Player* player;
+	
+
 
 	void Bullet_Firing();
 

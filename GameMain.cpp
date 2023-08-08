@@ -27,15 +27,15 @@ void GameMain::Game()
 		printfDx("Hit");
 	}*/
 
+	bullet->Update();
+	bullet->Bullet_Firing();
+	player->Update();
+
 	if (bullet->HitSphere(player) == true)
 	{
 		printfDx("Hit");
 	}
 
-
-	bullet->Update();
-	bullet->Bullet_Firing();
-	player->Update();
 }
 
 void GameMain::Draw() const
