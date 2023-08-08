@@ -1,1 +1,2 @@
 C:\C++授業\shooting\x64\Debug\shooting.exe
+C:\C++授業\_shooting\x64\Debug\shooting.exe
