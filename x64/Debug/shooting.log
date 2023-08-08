@@ -1,0 +1,7 @@
+﻿  Player.cpp
+C:\C++授業\shooting\common.h(1,1): warning C4828: オフセット 0x140 から始まる、現在のソースの文字セット (コードページ 932) では使用できない文字がファイルに含まれています。
+C:\C++授業\shooting\Player.cpp(68,33): warning C4244: '引数': 'const float' から 'int' への変換です。データが失われる可能性があります。
+C:\C++授業\shooting\Player.cpp(68,21): warning C4244: '引数': 'const float' から 'int' への変換です。データが失われる可能性があります。
+C:\C++授業\shooting\Player.cpp(79,66): warning C4244: 'return': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\C++授業\shooting\Player.cpp(83,66): warning C4244: 'return': 'double' から 'float' への変換です。データが失われる可能性があります。
+  shooting.vcxproj -> C:\C++授業\shooting\x64\Debug\shooting.exe
