@@ -1,24 +1,10 @@
-﻿  Bullet.cpp
+﻿  main.cpp
 C:\C++授業\_shooting\common.h(1,1): warning C4828: オフセット 0x140 から始まる、現在のソースの文字セット (コードページ 932) では使用できない文字がファイルに含まれています。
-C:\C++授業\_shooting\Bullet.cpp(99,33): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\C++授業\_shooting\Bullet.cpp(99,21): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-  CharaBase.cpp
-  Enemy.cpp
-  FPS.cpp
-C:\C++授業\_shooting\common.h(1,1): warning C4828: オフセット 0x140 から始まる、現在のソースの文字セット (コードページ 932) では使用できない文字がファイルに含まれています。
-  GameMain.cpp
-  main.cpp
-C:\C++授業\_shooting\common.h(1,1): warning C4828: オフセット 0x140 から始まる、現在のソースの文字セット (コードページ 932) では使用できない文字がファイルに含まれています。
-  NwaySpawner.cpp
-  PAD_INPUT.cpp
   Player.cpp
 C:\C++授業\_shooting\common.h(1,1): warning C4828: オフセット 0x140 から始まる、現在のソースの文字セット (コードページ 932) では使用できない文字がファイルに含まれています。
-C:\C++授業\_shooting\Player.cpp(68,33): warning C4244: '引数': 'const float' から 'int' への変換です。データが失われる可能性があります。
-C:\C++授業\_shooting\Player.cpp(68,21): warning C4244: '引数': 'const float' から 'int' への変換です。データが失われる可能性があります。
-C:\C++授業\_shooting\Player.cpp(79,66): warning C4244: 'return': 'double' から 'float' への変換です。データが失われる可能性があります。
-C:\C++授業\_shooting\Player.cpp(83,66): warning C4244: 'return': 'double' から 'float' への変換です。データが失われる可能性があります。
-  SceneManager.cpp
-  SphereCollider.cpp
+C:\C++授業\_shooting\Player.cpp(35,33): warning C4244: '引数': 'const float' から 'int' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\Player.cpp(35,21): warning C4244: '引数': 'const float' から 'int' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\Player.cpp(46,66): warning C4244: 'return': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\Player.cpp(50,66): warning C4244: 'return': 'double' から 'float' への変換です。データが失われる可能性があります。
   コードを生成中...
-  LINK : 前回のインクリメンタル リンクで C:\C++授業\_shooting\x64\Debug\shooting.exe が見つからなかったか、ビルドされませんでした。フル リンクを行います。
   shooting.vcxproj -> C:\C++授業\_shooting\x64\Debug\shooting.exe

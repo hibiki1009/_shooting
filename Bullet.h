@@ -1,6 +1,5 @@
 #pragma once
 #include "SphereCollider.h"
-#include"Player.h"
 
 typedef struct Bullet_Vector {
 	float x, y;
@@ -15,16 +14,11 @@ private:
 		bool firing;
 		bool bullet_move;
 		int move;
-
-		/*テスト用*/
-        int test1;
-		/*テスト用*/
 		
 		int damage;
 		float speed;				// スピード
 
 		B_Vector B_pos;			// 弾の位置構造体
-		/*Player* player;*/
 public:
 	
 

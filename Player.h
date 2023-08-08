@@ -3,6 +3,7 @@
 #include"CharaBase.h"
 #include"PAD_INPUT.h"
 #include <math.h>
+#include"Bullet.h"
 
 // メモ
 // プレイヤーがバレットを持つように設計しなおす
@@ -11,19 +12,17 @@
 class Player:public CharaBase
 {
 private:
-	
-
 	int HitBullet;		// テスト用
-
 	int score;
-	
 	float Speed;			// プレイヤースピード
 	float Pr;
-	
 	float start;
+
+	float B_x,B_y;
 
 
 public:
+	Bullet* bullet;
 	static int BulletFlg;		// 1上 2右 3下 4左
 	//static int Px, Py;	// プレイヤーの座標
 
@@ -38,5 +37,9 @@ public:
 	// コントローラの入力を返す
 	float inputX();
 	float inputY();
+
+	// Playerの移動に関する処理
+	void PlayerMove();
+	void Bullet_Move(SphereCollider* spherecollider);
 };
 

@@ -5,6 +5,8 @@ int Player::BulletFlg;
 
 Player::Player()
 {
+	bullet = new Bullet;
+
 	score = 0;
 	location.x = SCREEN_WIDTH / 2;
 	location.y = SCREEN_HEIGHT - 100;
@@ -21,45 +23,9 @@ Player::~Player()
 }
 void Player::Update()
 {
+	PlayerMove();
+	// Bulletの座標をplayerの座標に更新 + 発射処理を行う
 	// 傾きを取得、左方向に移動
-
-	if (inputX() <= -0.3) {
-		location.x -= Speed;
-		BulletFlg = 4;
-	}
-	// 傾きを取得、右方向に移動
-	if (inputX() >= 0.3) {
-		location.x += Speed;
-		BulletFlg = 2;
-	}
-	if (inputY() <= -0.3) {
-		location.y -= Speed;
-		BulletFlg = 1;
-	}
-
-	if (inputY() >= 0.3) {
-		start = 1.15f;
-		location.y += Speed;
-		BulletFlg = 3;
-	}
-
-	if (location.x <= 10)
-	{
-		location.x = 10;
-	}
-	if (location.x >= SCREEN_WIDTH-10)
-	{
-		location.x = SCREEN_WIDTH - 10;
-	}
-
-	if (location.y <= 10)
-	{
-		location.y = 10;
-	}
-	if (location.y >= SCREEN_HEIGHT - 10)
-	{
-		location.y = SCREEN_HEIGHT - 10;
-	}
 
 }
 
@@ -82,4 +48,52 @@ float Player::inputX() {
 
 float Player::inputY() {
 	return round(((float)PAD_INPUT::GetPadThumbLY() / 32767) * 100) / 100;
+}
+
+void Player::PlayerMove()
+{
+	// 移動処理
+	if (inputX() <= -0.3) {
+		location.x -= Speed;
+		BulletFlg = 4;
+	}
+	if (inputX() >= 0.3) {
+		location.x += Speed;
+		BulletFlg = 2;
+	}
+	if (inputY() <= -0.3) {
+		location.y -= Speed;
+		BulletFlg = 1;
+	}
+
+	if (inputY() >= 0.3) {
+		start = 1.15f;
+		location.y += Speed;
+		BulletFlg = 3;
+	}
+
+	// 移動制限処理
+	if (location.x <= 10)
+	{
+		location.x = 10;
+	}
+	if (location.x >= SCREEN_WIDTH - 10)
+	{
+		location.x = SCREEN_WIDTH - 10;
+	}
+
+	if (location.y <= 10)
+	{
+		location.y = 10;
+	}
+	if (location.y >= SCREEN_HEIGHT - 10)
+	{
+		location.y = SCREEN_HEIGHT - 10;
+	}
+
+}
+
+void Player::Bullet_Move(SphereCollider* spherecollider)
+{
+	spherecollider->GetLocation() = location;
 }

@@ -43,6 +43,12 @@ Location SphereCollider::GetLocation()
     return location;
 }
 
+int SphereCollider::SetLocation(SphereCollider* spherecollider)
+{
+    spherecollider->location = location;
+    return 0;
+}
+
 // ‚±‚±‚Ü‚Å
 
 //SphereCollider::SphereCollider()

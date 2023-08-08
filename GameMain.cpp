@@ -27,9 +27,16 @@ void GameMain::Game()
 		printfDx("Hit");
 	}*/
 
+	
+	player->Update();
+
 	bullet->Update();
 	bullet->Bullet_Firing();
-	player->Update();
+
+	
+	/*player->SetLocation(bullet);*/
+
+	// False‚È‚ç
 
 	if (bullet->HitSphere(player) == true)
 	{
