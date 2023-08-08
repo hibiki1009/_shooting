@@ -2,7 +2,6 @@
 
 void Enemy::Update()
 {
-	int a;
 }
 
 void Enemy::Draw()const
