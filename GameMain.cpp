@@ -22,26 +22,13 @@ AbstractScene* GameMain::Update()
 
 void GameMain::Game()
 {
+	player->Update();
+	player->Bullet_Move();
+
 	/*if (bullet->HitSphere(player) == true)
 	{
 		printfDx("Hit");
 	}*/
-
-	
-	player->Update();
-
-	bullet->Update();
-	bullet->Bullet_Firing();
-
-	
-	/*player->SetLocation(bullet);*/
-
-	// False‚È‚ç
-
-	if (bullet->HitSphere(player) == true)
-	{
-		printfDx("Hit");
-	}
 
 }
 
@@ -49,4 +36,14 @@ void GameMain::Draw() const
 {
 	player->Draw();
 	bullet->Draw();
+}
+
+int GameMain::HitCheck()
+{
+	return 0;
+}
+
+void GameMain::SpawnBullet()
+{
+
 }

@@ -2,9 +2,8 @@
 
 struct Location
 {
-	float x; //中心座標(x)
-	float y; //中心座標(y)
-
+	/*static*/ float x; //中心座標(x)
+	/*static*/ float y; //中心座標(y)
 };
 
 class SphereCollider
@@ -12,6 +11,7 @@ class SphereCollider
 protected:
 	int radius; // 半径
 	Location location;// 当たり判定
+
 public:
 	SphereCollider(); // コンストラクタ  (初期化)
 	SphereCollider(int _radius);
@@ -19,6 +19,7 @@ public:
 	bool HitSphere(SphereCollider* spherecollider)const; // 当たり判定
 
 	Location GetLocation(); //中心座標を取得
+
 	int SetLocation(SphereCollider* spherecollider);  //相手座標を自分の座標に合わせる 
 
 

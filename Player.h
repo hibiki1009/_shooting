@@ -18,7 +18,8 @@ private:
 	float Pr;
 	float start;
 
-	float B_x,B_y;
+	float b_l;
+
 
 
 public:
@@ -40,6 +41,6 @@ public:
 
 	// Player‚ÌˆÚ“®‚ÉŠÖ‚·‚éˆ—
 	void PlayerMove();
-	void Bullet_Move(SphereCollider* spherecollider);
+	void Bullet_Move();
 };
 

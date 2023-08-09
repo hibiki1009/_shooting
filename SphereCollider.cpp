@@ -1,7 +1,8 @@
 #include "SphereCollider.h"
 #include<math.h>
 //#include "BoxCollider.h"
-
+//float Location::x;
+//float Location::y;
 
 SphereCollider::SphereCollider()
 {
@@ -42,6 +43,7 @@ Location SphereCollider::GetLocation()
 {
     return location;
 }
+
 
 int SphereCollider::SetLocation(SphereCollider* spherecollider)
 {

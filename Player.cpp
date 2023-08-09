@@ -2,7 +2,6 @@
 #include"common.h"
 
 int Player::BulletFlg;
-
 Player::Player()
 {
 	bullet = new Bullet;
@@ -52,6 +51,7 @@ float Player::inputY() {
 
 void Player::PlayerMove()
 {
+	b_l = location.y;
 	// ˆÚ“®ˆ—
 	if (inputX() <= -0.3) {
 		location.x -= Speed;
@@ -93,7 +93,7 @@ void Player::PlayerMove()
 
 }
 
-void Player::Bullet_Move(SphereCollider* spherecollider)
+void Player::Bullet_Move()
 {
-	spherecollider->GetLocation() = location;
+	bullet->GetLocation() = location;
 }

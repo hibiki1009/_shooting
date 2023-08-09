@@ -18,8 +18,11 @@ void Bullet::Bullet_Firing()
 	
 }
 
-void Bullet::Update()
+void Bullet::Update(float l_x, float l_y)
 {
+	/*location.x = l_x;
+	location.y = l_y;*/
+
 	/*printfDx("%d", bullet_move);*/
 	static int WeitTime = 0;
 	WeitTime++;
