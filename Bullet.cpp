@@ -3,13 +3,15 @@
 #include"common.h"
 
 
-Bullet::Bullet()
+Bullet::Bullet(float l_x, float l_y)
 {
 	firing = FALSE;
-	bullet_move = FALSE;
 
-	location.x = 100;//当たり判定
-	location.y = 300;
+	// スポーンした時のみ合わせればいいからコンストラクタでOK
+
+	location.x = l_x;//当たり判定
+	location.y = l_y-10;
+	move = location.y;
 	radius = 5;
 }
 
@@ -18,21 +20,15 @@ void Bullet::Bullet_Firing()
 	
 }
 
-void Bullet::Update(float l_x, float l_y)
+void Bullet::Update()
 {
-	/*location.x = l_x;
-	location.y = l_y;*/
-
-	/*printfDx("%d", bullet_move);*/
-	static int WeitTime = 0;
-	WeitTime++;
-	if (WeitTime % 5 == 0 && bullet_move == TRUE)
-	{
-		move = move+10;
-	}
-	if (bullet_move == FALSE) {
-		move = 0;
-	}
+	/*printfDx("  %d  ", move);*/
+	move = move-10;
+	location.y = move;
+	
+	/*if (move > 0) {
+		--move;
+	}*/
 }
 
 void Bullet::Draw()
@@ -45,4 +41,9 @@ int Bullet::GetDamage()
 {
 	return 0;
 }
+
+//Location Bullet::SetLocation(SphereCollider* spherecollider)
+//{
+//	return location = spherecollider->GetLocation();
+//}
 

@@ -20,7 +20,7 @@ public:
 
 	Location GetLocation(); //中心座標を取得
 
-	int SetLocation(SphereCollider* spherecollider);  //相手座標を自分の座標に合わせる 
+	//Location SetLocation(SphereCollider* spherecollider);  //相手座標を自分の座標に合わせる 
 
 
 };

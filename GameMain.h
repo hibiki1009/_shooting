@@ -2,22 +2,27 @@
 #include <vector>
 #include "AbstractScene.h"
 #include"DxLib.h"
+#include"common.h"
 
 #include"Player.h"
+#include"Enemy.h"
 #include"Bullet.h"
-
+#include"BulletsSpawner.h"
+#include<vector>
 
 class GameMain :public AbstractScene {
 private:
 	int life;				// 残機
-	int* enemy[5];			// ポインタ配列
-	int* bullets[10];			// ポインタ配列
-
+	int shoot_i;
+	int WaitTime;
 public:
 
 	// クラスオブジェクト
 	Player* player;
-	Bullet* bullet;
+	Enemy* enemy;
+	// Bulletを配列化
+	Bullet *bullet[1000];
+	/*BulletsSpawner *B_spawner;*/
 
 	void Game();
 	// コンストラクタ

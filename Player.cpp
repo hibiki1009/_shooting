@@ -4,7 +4,7 @@
 int Player::BulletFlg;
 Player::Player()
 {
-	bullet = new Bullet;
+	/*bullet = new Bullet;*/
 
 	score = 0;
 	location.x = SCREEN_WIDTH / 2;
@@ -32,11 +32,7 @@ void Player::Draw()const
 {
 	// テスト用
 	DrawCircle(location.x, location.y, 5, 0xffffff, TRUE);
-	//if (HitBullet == TRUE)
-	//{
-	//	// テスト用
-	//	printfDx("当っています");
-	//}
+	
 }
 
 
@@ -51,7 +47,6 @@ float Player::inputY() {
 
 void Player::PlayerMove()
 {
-	b_l = location.y;
 	// 移動処理
 	if (inputX() <= -0.3) {
 		location.x -= Speed;
@@ -93,7 +88,7 @@ void Player::PlayerMove()
 
 }
 
-void Player::Bullet_Move()
-{
-	bullet->GetLocation() = location;
-}
+//void Player::Bullet_Move()
+//{
+//	SetLocation(bullet) = location;
+//}

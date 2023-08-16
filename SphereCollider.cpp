@@ -45,11 +45,10 @@ Location SphereCollider::GetLocation()
 }
 
 
-int SphereCollider::SetLocation(SphereCollider* spherecollider)
-{
-    spherecollider->location = location;
-    return 0;
-}
+//Location SphereCollider::SetLocation(SphereCollider* spherecollider)
+//{
+//    return spherecollider->location = location;
+//}
 
 // ‚±‚±‚Ü‚Å
 

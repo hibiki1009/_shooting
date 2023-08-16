@@ -1,9 +1,2 @@
-﻿  Player.cpp
-C:\C++授業\_shooting\common.h(1,1): warning C4828: オフセット 0x140 から始まる、現在のソースの文字セット (コードページ 932) では使用できない文字がファイルに含まれています。
-C:\C++授業\_shooting\Player.cpp(34,33): warning C4244: '引数': 'const float' から 'int' への変換です。データが失われる可能性があります。
-C:\C++授業\_shooting\Player.cpp(34,21): warning C4244: '引数': 'const float' から 'int' への変換です。データが失われる可能性があります。
-C:\C++授業\_shooting\Player.cpp(45,66): warning C4244: 'return': 'double' から 'float' への変換です。データが失われる可能性があります。
-C:\C++授業\_shooting\Player.cpp(49,66): warning C4244: 'return': 'double' から 'float' への変換です。データが失われる可能性があります。
-  SphereCollider.cpp
-  コードを生成中...
+﻿  GameMain.cpp
   shooting.vcxproj -> C:\C++授業\_shooting\x64\Debug\shooting.exe

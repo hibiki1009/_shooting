@@ -18,12 +18,10 @@ private:
 	float Pr;
 	float start;
 
-	float b_l;
-
 
 
 public:
-	Bullet* bullet;
+	/*Bullet* bullet;*/
 	static int BulletFlg;		// 1上 2右 3下 4左
 	//static int Px, Py;	// プレイヤーの座標
 
@@ -41,6 +39,6 @@ public:
 
 	// Playerの移動に関する処理
 	void PlayerMove();
-	void Bullet_Move();
+	/*void Bullet_Move();*/
 };
 
