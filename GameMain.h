@@ -14,12 +14,13 @@ class GameMain :public AbstractScene {
 private:
 	int life;				// 残機
 	int shoot_i;
+	int E_num;
 	int WaitTime;
 public:
 
 	// クラスオブジェクト
 	Player* player;
-	Enemy* enemy;
+	Enemy* enemy/*[50]*/;
 	// Bulletを配列化
 	Bullet *bullet[1000];
 	/*BulletsSpawner *B_spawner;*/

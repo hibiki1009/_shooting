@@ -10,12 +10,12 @@ private:
 	int color;
 	int f_time;
 public:
-	Enemy();
+	Enemy(/*float _x,float _y*/);
 	~Enemy();
 
-	void EnemyDamage();
+	void Hit(int _damage)override;
 	void SetHit(bool _hit);
-	int point;
+	int Gethp();
 
 	void Update() override;
 	void Draw()const override;

@@ -18,8 +18,6 @@ public:
 	void Draw();
 	int GetDamage();
 	Location SetLocation(SphereCollider* spherecollider);
-	float Getx();
-	float Gety();
 
 private:
 

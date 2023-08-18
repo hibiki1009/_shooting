@@ -66,8 +66,10 @@ void GameMain::Draw() const
 
 int GameMain::HitCheck()
 {
+	enemy->Update();
+	//printfDx("  %d  ", enemy->Gethp());
 	enemy->SetHit(false);
-	for (int i = 0; i < 1000; i++) {
+	for (int i = 1; i < 1000; i++) {
 		if (bullet[i] != nullptr) {
 			// ’†g‚ª‚ ‚é‚È‚çHitˆ—‚·‚é
 			if (bullet[i]->HitSphere(player) == true)
@@ -75,7 +77,7 @@ int GameMain::HitCheck()
 				printfDx("Hit");
 			}
 
-			enemy->EnemyDamage();
+			enemy->Hit(bullet[i]->GetDamage());
 			if (bullet[i]->HitSphere(enemy) == true)
 			{
 				enemy->SetHit(true);
@@ -88,6 +90,11 @@ int GameMain::HitCheck()
 
 void GameMain::SpawnBullet()
 {
+
+	if (shoot_i == 1000) {
+		shoot_i = 1;
+	}
+
 	// A‚ª‰Ÿ‚³‚ê‚Ä‚¢‚éŠÔ“ü‚é
 	if (PAD_INPUT::GetNowKey(XINPUT_BUTTON_A)) {
 		
@@ -96,17 +103,10 @@ void GameMain::SpawnBullet()
 				bullet[shoot_i] = new Bullet(player->GetLocation().x, player->GetLocation().y);
 					shoot_i = shoot_i + 1;
 				
-				printfDx("  %d  ", shoot_i);
+				/*printfDx("  %d  ", shoot_i);*/
 			}
 			else {// *memo*   null‚Å‚È‚¢@‚©‚Â@y==0‚È‚çshoot_i=null‚ð‚·‚é
 
-			}
-			if (shoot_i > 600) {
-				for (int j = 0; j <= 500; j++) {
-					if (bullet[j] != nullptr) {
-						bullet[j] = nullptr;
-					}
-				}
 			}
 			if (shoot_i <= 400) {
 				for (int i = 500; i < 1000; i++) {
@@ -115,10 +115,14 @@ void GameMain::SpawnBullet()
 					}
 				}
 			}
+
+			if (shoot_i > 600) {
+				for (int j = 0; j <= 500; j++) {
+					if (bullet[j] != nullptr) {
+						bullet[j] = nullptr;
+					}
+				}
+			}
 			
-		if (shoot_i == 1000) {
-			shoot_i = 0;
-		}
-		
 	}
 }

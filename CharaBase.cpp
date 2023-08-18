@@ -9,7 +9,7 @@ void CharaBase::Draw()const
 
 }
 
-int CharaBase::Hit(SphereCollider bullet)
+void CharaBase::Hit(int _damage)
 {
-    return 0;
+    _damage;
 }

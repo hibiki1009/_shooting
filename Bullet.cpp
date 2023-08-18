@@ -8,7 +8,7 @@ Bullet::Bullet(float l_x, float l_y)
 	firing = FALSE;
 
 	// スポーンした時のみ合わせればいいからコンストラクタでOK
-
+	damage = 100;
 	location.x = l_x;//当たり判定
 	location.y = l_y-10;
 	move = location.y;
@@ -25,21 +25,16 @@ void Bullet::Update()
 	/*printfDx("  %d  ", move);*/
 	move = move-10;
 	location.y = move;
-	
-	/*if (move > 0) {
-		--move;
-	}*/
 }
 
 void Bullet::Draw()
 {
-	// テスト用
 	DrawCircle(location.x, location.y, radius, 0xff0000, TRUE);
 }
 
 int Bullet::GetDamage()
 {
-	return 0;
+	return damage;
 }
 
 //Location Bullet::SetLocation(SphereCollider* spherecollider)
