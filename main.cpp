@@ -20,7 +20,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	if (DxLib_Init() == -1) {
 		return -1;
 	}
-
+	// 背景色
+	SetBackgroundColor(1000, 1000, 1000);
 	SetDrawScreen(DX_SCREEN_BACK);
 
 	SceneManager scene = (dynamic_cast<AbstractScene*>(new GameMain()));// 初めのシーンをsceneにキャスト

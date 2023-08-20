@@ -147,11 +147,13 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="FPS.h" />
     <ClInclude Include="GameMain.h" />
+    <ClInclude Include="GIMMICK.h" />
     <ClInclude Include="NwaySpawner.h" />
     <ClInclude Include="PAD_INPUT.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SphereCollider.h" />
+    <ClInclude Include="UI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bullet.cpp" />
@@ -160,12 +162,14 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="FPS.cpp" />
     <ClCompile Include="GameMain.cpp" />
+    <ClCompile Include="GIMMICK.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NwaySpawner.cpp" />
     <ClCompile Include="PAD_INPUT.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SphereCollider.cpp" />
+    <ClCompile Include="UI.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

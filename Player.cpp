@@ -30,8 +30,7 @@ void Player::Update()
 
 void Player::Draw()const
 {
-	// テスト用
-	DrawCircle(location.x, location.y, 5, 0xffffff, TRUE);
+	DrawCircle(location.x, location.y, 5, 0x000000, TRUE);
 	
 }
 
@@ -47,6 +46,15 @@ float Player::inputY() {
 
 void Player::PlayerMove()
 {
+	// 瞬間移動
+	/*if (PAD_INPUT::GetKeyFlg(XINPUT_BUTTON_RIGHT_SHOULDER))			
+	{
+		if (inputX() <= -0.3) {
+			for (int i = 0; i < 100; i++) {
+				location.x = location.x - 1;
+			}
+		}
+	}*/
 	// 移動処理
 	if (inputX() <= -0.3) {
 		location.x -= Speed;

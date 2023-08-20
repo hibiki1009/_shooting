@@ -4,7 +4,6 @@
 #include "common.h"
 
 
-
 class BulletsSpawner
 {
 private:
@@ -18,6 +17,6 @@ public:
 	// 引数にゲームメインシーンのポインタを受け取るSpawnBulletで弾を生成する
 	// 弾を発射する	
 	/*int Shoot(Bullet* bullet[100]);*/
-	int Shoot(float _x, float _y);
+	/*int Shoot(struct bullet[Bullet_Num]);*/
 };
 

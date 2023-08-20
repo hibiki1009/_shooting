@@ -5,9 +5,7 @@
 #include <math.h>
 #include"Bullet.h"
 
-// メモ
-// プレイヤーがバレットを持つように設計しなおす
-// 出来るだけ関数の戻り値を使って書く
+
 
 class Player:public CharaBase
 {
