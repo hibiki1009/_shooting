@@ -20,14 +20,13 @@ private:
 	int Eshoot_i;
 	int E_num;
 	int WaitTime;
-
 	// 仮変数
 	int Score;
 public:
 
 	// クラスオブジェクト
 	Player* player;
-	Enemy* enemy/*[50]*/;
+	Enemy* enemy[Enemy_Num];
 	GIMMICK* gimmick;
 	UI* ui;
 	// Bulletを配列化

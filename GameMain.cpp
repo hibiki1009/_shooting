@@ -7,15 +7,20 @@ GameMain::GameMain()
 {
 	Score = 0;
 	WaitTime = 0;
+	E_num = 1;
 	shoot_i = 1;
 	Eshoot_i = 1;
 
 	player = new Player;
-	enemy = new Enemy(0);
 	gimmick = new GIMMICK;
 	ui = new UI;
 	/*B_spawner = new BulletsSpawner;*/
 	// コンストラクタで全て殻にする
+
+	for (int i = 0; i < Enemy_Num; i++) {
+		enemy[i] = nullptr;
+	}
+
 	for (int i = 0; i < Bullet_Num; i++) {
 		bullet[i] = nullptr;
 	}
@@ -40,16 +45,24 @@ void GameMain::Game()
 {
 	ui->SetScore(Score);
 	player->Update();
-	if (enemy != nullptr) {
-		enemy->Update();
-		enemy->Enemy_move(player->GetLocation().x, player->GetLocation().y);
+	SpawnEnemy();
 
-
-		if (enemy->Gethp() < 0) {
-			Score = Score + enemy->GetPoint();
-			enemy = nullptr;
+	for (int i = 0; i < Enemy_Num; i++) {
+		if (enemy[i] != nullptr) {
+			enemy[i]->Update();
+			// エネミーの移動
+			enemy[i]->Enemy_move(player->GetLocation().x, player->GetLocation().y);
+			// エネミーのHPを取得、0ならスコア加算
+			if (enemy[i]->Gethp() < 0) {
+				Score = Score + enemy[i]->GetPoint();
+				enemy[i] = nullptr;
+			}
 		}
 	}
+
+
+
+
 	// 球を発射する処理
 	/*if (B_spawner->Shoot(&bullet[shoot_i]) == true) {*/
 		SpawnBullet();
@@ -79,9 +92,14 @@ void GameMain::Draw() const
 	if (player != nullptr) {
 		player->Draw();
 	}
-	if (enemy != nullptr) {
-		enemy->Draw();
+	// nullじゃないエネミーのみDrawする
+	for (int i = 0; i < Enemy_Num; i++) {
+		if (enemy[i] != nullptr) {
+			enemy[i]->Draw();
+		}
 	}
+
+
 	for (int i = 0; i < Bullet_Num; i++) {
 		// 中身があるならDraw処理する
 		if (bullet[i] != nullptr) {
@@ -100,7 +118,6 @@ void GameMain::Draw() const
 int GameMain::HitCheck()
 {
 	//printfDx("  %d  ", enemy->Gethp());
-	if (enemy != nullptr) {
 	
 		for (int i = 1; i < Bullet_Num; i++) {
 			if (bullet[i] != nullptr) {
@@ -110,15 +127,21 @@ int GameMain::HitCheck()
 					printfDx("Hit");
 				}
 
-				if (bullet[i]->HitSphere(enemy) == true)
-				{
-					enemy->Hit(bullet[i]->GetDamage());
-						bullet[i] = nullptr;
-					/*	printfDx("HitEnemy");*/
+				// エネミーと弾の当たり判定
+				for (int j = 0; j < Enemy_Num; j++) {
+					if (enemy[j] != nullptr) {
+						if (bullet[i]->HitSphere(enemy[j]) == true)
+						{
+							enemy[j]->Hit(bullet[i]->GetDamage());
+							bullet[i] = nullptr;
+							/*	printfDx("HitEnemy");*/
+						}
+					}
 				}
+
+
 			}
 		}
-	}
 	return 0;
 }
 
@@ -173,12 +196,14 @@ void GameMain::SpawnBullet()
 			
 	}
 	// ここからエネミー
-	if(enemy!=nullptr){
-		if (enemy->shoot() == true) {
+	for (int j = 0; j < Enemy_Num; j++){
+	if(enemy[j] != nullptr) {
+		if (enemy[j]->shoot() == true) {
 			if (Ebullet[Eshoot_i] == nullptr) {
-				Ebullet[Eshoot_i] = new Bullet(enemy->GetLocation().x, enemy->GetLocation().y, true);
+				Ebullet[Eshoot_i] = new Bullet(enemy[j]->GetLocation().x, enemy[j]->GetLocation().y, true);
 				Eshoot_i = Eshoot_i + 1;
 			}
+		}
 
 			// 301～600をnullにする
 			if (Eshoot_i <= 300) {
@@ -210,3 +235,11 @@ void GameMain::SpawnBullet()
 		}
 	}
 }
+
+void GameMain::SpawnEnemy()
+{
+		if (enemy[E_num] == nullptr) {
+			enemy[E_num] = new Enemy(SCREEN_WIDTH / 2);
+			/*E_num = E_num + 1;*/
+		}
+	}

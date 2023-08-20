@@ -7,8 +7,8 @@ Enemy::Enemy(int _SpownX) {
 	WaitTime = 0;
 	forming = false;
 	hp = 1000;
-	location.x = SCREEN_WIDTH /2;
-	location.y = 100;
+	location.x = GetRand(SCREEN_WIDTH);
+	location.y = -100;
 	radius = 15;
 	color = 0x000000;
 	f_time = 0;
@@ -23,18 +23,19 @@ void Enemy::Hit(int _damage)
 {
 			color = 0xff0000;
 			hp = hp - _damage;
+			color = 0x000000;
 }
 
 void Enemy::Update()
 {
+	if (location.y < 100) {
+		location.y++;
+	}
 	if (GetRand(10) <= 5) {
 		forming = true;
 	}
 	else {
 		forming = false;
-	}
-	if (hp < 0) {
-		color = 0x000000;
 	}
 }
 
