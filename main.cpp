@@ -5,6 +5,7 @@
 #include"SceneManager.h"
 
 #include"GameMain.h"
+#include"Title.h"
 #include"FPS.h"
 #include"PAD_INPUT.h"
 
@@ -24,7 +25,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SetBackgroundColor(1000, 1000, 1000);
 	SetDrawScreen(DX_SCREEN_BACK);
 
-	SceneManager scene = (dynamic_cast<AbstractScene*>(new GameMain()));// 初めのシーンをsceneにキャスト
+	SceneManager scene = (dynamic_cast<AbstractScene*>(new Title()));// 初めのシーンをsceneにキャスト
 
 	FPS FPSct(FRAMERATE, UPDATETIME);// フレームレート設定
 
