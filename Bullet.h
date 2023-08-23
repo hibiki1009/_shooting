@@ -1,7 +1,9 @@
 #pragma once
 #include "SphereCollider.h"
 #include<vector>
+#include <corecrt.h>
 #include"Player.h"
+#include<math.h>
 
 //typedef struct Bullet_Vector {
 //	float x, y;
@@ -12,13 +14,20 @@ class Bullet:public SphereCollider
 
 public:
 
-	void Bullet_Firing();
-	Bullet(float l_x, float l_y, bool _Enemyshoot);
+	Bullet(float l_x, float l_y, bool _Enemyshoot, float _Radian);
+	~Bullet();
 	void Update();
 	void Draw();
 	int GetDamage();
-	Location SetLocation(SphereCollider* spherecollider);
+	void SET_P_Distanse(float _x,float _y);
+	virtual float inputX();
+	virtual float inputY();
+	float Distance_Line_Segment();
+
 private:
+	float Radian;
+	int WaitTime;
+	int test;
 
 	int damage;				// É_ÉÅÅ[ÉW
 
@@ -33,7 +42,11 @@ private:
 
 	int move;
 
-	float x, y;
+	int moveX;
+	int moveY;
+	
+	bool Aim_flgX;
+	bool Aim_flgY;
 
 };
 

@@ -66,6 +66,7 @@ void Title::Draw() const
 	DrawFormatString(150, 400, 0xffffff, "きどうする。");
 	DrawFormatString(130, 500, 0xffffff, "きろくを確認する。");
 	DrawFormatString(110, 600, 0xffffff, "また明日がんばる");
+	SetFontSize(20);
 }
 
 float Title::inputX() {

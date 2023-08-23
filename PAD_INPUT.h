@@ -17,7 +17,6 @@ public:
 	// パッド入力の更新
 	static void UpdateInput();
 
-	// 入力確認（デバッグ）
 	static void DebugInput(); //デバッグ
 
 	// 左スティック横

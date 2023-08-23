@@ -12,15 +12,18 @@ class Player:public CharaBase
 private:
 	int HitBullet;		// テスト用
 	int score;
+	int hp;
 	float Speed;			// プレイヤースピード
+	float aim_Speed;		// エイムの感度
 	float Pr;
 	float start;
 
-
+	float aim_x;
+	float aim_y;
+	int aim_img;
 
 public:
 	/*Bullet* bullet;*/
-	static int BulletFlg;		// 1上 2右 3下 4左
 	//static int Px, Py;	// プレイヤーの座標
 
 	int test = 0;
@@ -35,8 +38,19 @@ public:
 	float inputX();
 	float inputY();
 
+	float inputRX();
+	float inputRY();
+
+	void Aiming();
 	// Playerの移動に関する処理
 	void PlayerMove();
 	/*void Bullet_Move();*/
+
+	float GetAime_x();
+	float GetAime_y();
+
+	float getRadian();
+	int GetHp();
+	void Hit(int _damage)override;
 };
 

@@ -6,15 +6,13 @@ Enemy::Enemy(int _SpownX) {
 	point = 100;
 	WaitTime = 0;
 	forming = false;
-	hp = 1000;
+	hp = 100;
 	location.x = GetRand(SCREEN_WIDTH);
 	location.y = -100;
-	radius = 15;
+	radius = 50;
 	color = 0x000000;
 	f_time = 0;
-	/*Speed = 5;
-	start = 1.15f;
-	BulletFlg = 1;*/
+	
 }
 Enemy::~Enemy()
 {
@@ -28,7 +26,7 @@ void Enemy::Hit(int _damage)
 
 void Enemy::Update()
 {
-	if (location.y < 100) {
+	if (location.y < 130) {
 		location.y++;
 	}
 	if (GetRand(10) <= 5) {
@@ -41,6 +39,10 @@ void Enemy::Update()
 
 void Enemy::Draw()const
 {
+	// ‰e
+	clsDx();
+	DrawFormatString(location.x-20, location.y - 100,0xff0000,"%d",hp);
+	//DrawCircle(location.x + 5, location.y + 5, radius, 0xcccccc, TRUE);
 	DrawCircle(location.x, location.y, radius, color, TRUE);
 }
 
@@ -57,11 +59,23 @@ void Enemy::Enemy_move(float _x, float _y) {
 		if (_x == location.x) {
 			location.x = location.x;
 		}
-	/*}*/
+
+}
+void Enemy::SetPlayerlocation(float _x,float _y) {
+	Set_PlocationX = _x;
+	Set_PlocationY = _y;
+}
+
+float Enemy::getRadian()
+{
+	float w = Set_PlocationX - location.x;
+	float h = Set_PlocationY - location.y;
+
+	return atan2f(h, w);
 }
 
 bool Enemy::shoot() {
-	if (++WaitTime % 15 == 0) {
+	if (++WaitTime % 11 == 0) {
 		return true;
 	}
 	return false;

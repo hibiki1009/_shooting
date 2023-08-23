@@ -1,11 +1,12 @@
 #include "BulletsSpawner.h"
-#include"Bullet.h"
+#include"common.h"
 
-//int BulletsSpawner::Shoot(GameMain* bullet)
+//int BulletsSpawner::Shoot(GameMain* gamemain)
 //{
-//        if (PAD_INPUT::GetKeyFlg(XINPUT_BUTTON_A)) {
-//            bullet
-//            return true;
-//        }
-//    return false;
+//	for (int i = 0; i < Bullet_Num; i++) {
+//		if (gamemain->bullet[i] != nullptr) {
+//		
+//		}
+//	}
+//	return 0;
 //}

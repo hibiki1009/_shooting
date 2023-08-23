@@ -11,6 +11,7 @@
 #include"Bullet.h"
 #include"GIMMICK.h"
 #include"BulletsSpawner.h"
+#include"NwaySpawner.h"
 #include<vector>
 
 class GameMain :public AbstractScene {
@@ -22,6 +23,9 @@ private:
 	int WaitTime;
 	// 仮変数
 	int Score;
+	float gridX;
+	float gridY;
+	float Gole_distance;// ゴールまでの距離
 public:
 
 	// クラスオブジェクト
@@ -29,8 +33,8 @@ public:
 	Enemy* enemy[Enemy_Num];
 	GIMMICK* gimmick;
 	UI* ui;
-	// Bulletを配列化
-	Bullet *bullet[Bullet_Num];
+	Bullet* bullet[Bullet_Num];
+
 	Bullet* Ebullet[Bullet_Num];
 	/*BulletsSpawner *B_spawner;*/
 
@@ -51,6 +55,6 @@ public:
 
 	void SpawnBullet();			// 弾の配列に新しくデータを作成する
 	void SpawnEnemy();
-
+	void Grid();
 };
 

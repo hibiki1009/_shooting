@@ -1,2 +1,8 @@
-﻿  GameMain.cpp
+﻿  Enemy.cpp
+C:\C++授業\_shooting\common.h(1,1): warning C4828: オフセット 0x386 から始まる、現在のソースの文字セット (コードページ 932) では使用できない文字がファイルに含まれています。
+C:\C++授業\_shooting\Enemy.cpp(10,22): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\Enemy.cpp(44,45): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\Enemy.cpp(44,29): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\Enemy.cpp(46,33): warning C4244: '引数': 'const float' から 'int' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\Enemy.cpp(46,21): warning C4244: '引数': 'const float' から 'int' への変換です。データが失われる可能性があります。
   shooting.vcxproj -> C:\C++授業\_shooting\x64\Debug\shooting.exe

@@ -9,7 +9,8 @@ void CharaBase::Draw()const
 
 }
 
+// Šî–{“I‚ÈHPˆ—‚ğs‚¤
 void CharaBase::Hit(int _damage)
 {
-    _damage;
+    hp = hp - _damage;
 }
