@@ -11,7 +11,9 @@ public:
 	void Scor_Anim();
 	// スコアをセットする
 	void SetScore(int _score);
+	void SetLife(int life);
 private:
 	int score;
+	int life;
 };
 

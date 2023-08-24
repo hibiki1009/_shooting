@@ -4,6 +4,8 @@
 #include"DxLib.h"
 #include"common.h"
 
+#include"Title.h"
+
 #include"UI.h"
 #include"CharaBase.h"
 #include"Player.h"

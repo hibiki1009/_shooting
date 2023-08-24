@@ -17,13 +17,6 @@ Enemy::Enemy(int _SpownX) {
 Enemy::~Enemy()
 {
 }
-void Enemy::Hit(int _damage)
-{
-			color = 0xff0000;
-			hp = hp - _damage;
-			color = 0x000000;
-}
-
 void Enemy::Update()
 {
 	if (location.y < 130) {

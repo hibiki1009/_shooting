@@ -5,7 +5,7 @@
 #include"SphereCollider.h"
 
 
-class BulletsSpawner /*:public SphereCollider*/
+class BulletsSpawner
 {
 private:
 	float speed;

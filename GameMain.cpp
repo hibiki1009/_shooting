@@ -7,6 +7,8 @@ GameMain::GameMain()
 {
 	Gole_distance = 1000;
 	Score = 0;
+	life = 3;
+
 	WaitTime = 0;
 	E_num = 1;
 	shoot_i = 1;
@@ -18,11 +20,7 @@ GameMain::GameMain()
 	player = new Player;
 	gimmick = new GIMMICK;
 	ui = new UI;
-	/*b_spawner = new BulletsSpawner;*/
-
-	/*B_spawner = new BulletsSpawner;*/
-	// コンストラクタで全て殻にする
-
+	
 	for (int i = 0; i < Enemy_Num; i++) {
 		enemy[i] = nullptr;
 	}
@@ -45,16 +43,23 @@ AbstractScene* GameMain::Update()
 {
 	Gole_distance = Gole_distance - 0.08f;
 	Game();
+	if (life < 1) {
+		return new Title;
+	}
 	return this;
 }
 
 void GameMain::Game()
 {
 	
-	ui->SetScore(Score);
+	
 	player->Update();
+	
 	if (player->GetHp() < 0) {
-		player = new Player;
+		if (life != 0) {
+			life = life - 1;
+			player = new Player;
+		}
 	}
 	SpawnEnemy();
 
@@ -73,10 +78,7 @@ void GameMain::Game()
 		}
 	}
 
-	// 球を発射する処理
-	/*if (B_spawner->Shoot(&bullet[shoot_i]) == true) {*/
 		SpawnBullet();
-	/*}*/
 	for (int i = 0; i < Bullet_Num; i++) {
 		//中身があるならUpdate処理する
 		if (bullet[i] != nullptr) {
@@ -91,22 +93,26 @@ void GameMain::Game()
 		}
 	}
 
-	// 弾丸の位置
-	
+	// 弾丸の判定処理
 	HitCheck();
 
+	// UIセット関数
+	ui->SetScore(Score);
+	ui->SetLife(life);
 
 }
 
 void GameMain::Draw() const
 {
+	// 背景グリッド線
+	for (int i = 0; i <= 16; i++) {
+		DrawLine(gridX * i, 0, gridX * i, SCREEN_HEIGHT, 0xcccccc, TRUE);
+		DrawLine(0, gridY * i, SCREEN_WIDTH, gridY * i, 0xcccccc, TRUE);
+	}
+
 	// 仮
 	DrawFormatString(0, 100, 0x000000, "ノコリ:%fTB", Gole_distance);
-	for (int i = 0; i <= 16; i++) {
-		DrawLine(gridX * i, 0, gridX * i,SCREEN_HEIGHT, 0xcccccc, TRUE);
-		DrawLine(0, gridY*i, SCREEN_WIDTH,gridY*i,0xcccccc, TRUE);
-	}
-	//DrawFormatString(0, 30, 0x000000, "%f", player->inputRX());
+	
 	ui->Draw();
 	if (player != nullptr) {
 		player->Draw();

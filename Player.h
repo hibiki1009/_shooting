@@ -51,6 +51,5 @@ public:
 
 	float getRadian();
 	int GetHp();
-	void Hit(int _damage)override;
 };
 

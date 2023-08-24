@@ -33,17 +33,13 @@ void Player::Update()
 
 }
 
-void Player::Hit(int _damage)
-{
-	hp = hp - _damage;
-}
-
 // プレイヤーとエイムポイントの角度を取得
 float Player::getRadian()
 {
 	float w = aim_x - location.x;
 	float h = aim_y - location.y;
 
+	// h～wの範囲のラジアン値を出す
 	return atan2f(h, w);
 }
 
