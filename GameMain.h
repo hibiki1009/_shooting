@@ -10,6 +10,7 @@
 #include"CharaBase.h"
 #include"Player.h"
 #include"Enemy.h"
+#include"EnemySpawn.h"
 #include"Bullet.h"
 #include"GIMMICK.h"
 #include"BulletsSpawner.h"
@@ -38,6 +39,8 @@ public:
 	Bullet* bullet[Bullet_Num];
 
 	Bullet* Ebullet[Bullet_Num];
+
+	EnemySpawn* e_spawn;
 	/*BulletsSpawner *B_spawner;*/
 
 	void Game();

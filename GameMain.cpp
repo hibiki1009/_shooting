@@ -1,6 +1,7 @@
 #include "GameMain.h"
 #include"SphereCollider.h"
 #include"PAD_INPUT.h"
+#include"EnemySpawn.h"
 
 
 GameMain::GameMain()
