@@ -99,7 +99,8 @@ void GameMain::Game()
 	// UIセット関数
 	ui->SetScore(Score);
 	ui->SetLife(life);
-
+	ui->SetHp(player->GetHp());
+	ui->SetP_location(player->GetLocation().x, player->GetLocation().y);
 }
 
 void GameMain::Draw() const
@@ -189,44 +190,43 @@ void GameMain::SpawnBullet()
 	}
 
 	// RBが押されている間入る
-	if (PAD_INPUT::GetNowKey(XINPUT_BUTTON_LEFT_SHOULDER)) {
-		
-	// 中身がないなら新しいplayer座標をもったBulletクラスを代入する
-			if (bullet[shoot_i] == nullptr) {
+	if (PAD_INPUT::GetNowKey(XINPUT_BUTTON_RIGHT_SHOULDER)) {
 
-				bullet[shoot_i] = new Bullet(player->GetLocation().x, player->GetLocation().y,false, player->getRadian());
-					shoot_i = shoot_i + 1;
-			}
+		// 中身がないなら新しいplayer座標をもったBulletクラスを代入する
+		if (bullet[shoot_i] == nullptr) {
 
-			// 1～300をnullにする
-			if (shoot_i > 600) {
-				for (int i = 1; i <= 300; i++)
-				{
-					if (bullet[i] != nullptr) {
-						bullet[i] = nullptr;
-					}
+			bullet[shoot_i] = new Bullet(player->GetLocation().x, player->GetLocation().y, false, player->getRadian());
+			shoot_i = shoot_i + 1;
+		}
+
+		// 1～300をnullにする
+		if (shoot_i > 600) {
+			for (int i = 1; i <= 300; i++)
+			{
+				if (bullet[i] != nullptr) {
+					bullet[i] = nullptr;
 				}
 			}
+		}
 
-			// 301～600をnullにする
-			if (shoot_i <= 300) {
-				for (int i = 301; i <= 600; i++)
-				{
-					if (bullet[i] != nullptr) {
-						bullet[i] = nullptr;
-					}
+		// 301～600をnullにする
+		if (shoot_i <= 300) {
+			for (int i = 301; i <= 600; i++)
+			{
+				if (bullet[i] != nullptr) {
+					bullet[i] = nullptr;
 				}
 			}
-			// 601～900をnullにする
-			if (shoot_i > 300 && 600 >= shoot_i) {
-				for (int i = 601; i <= 900; i++)
-				{
-					if (bullet[i] != nullptr) {
-						bullet[i] = nullptr;
-					}
+		}
+		// 601～900をnullにする
+		if (shoot_i > 300 && 600 >= shoot_i) {
+			for (int i = 601; i <= 900; i++)
+			{
+				if (bullet[i] != nullptr) {
+					bullet[i] = nullptr;
 				}
 			}
-			
+		}
 	}
 	// ここからエネミー
 	for (int j = 0; j < Enemy_Num; j++){
@@ -274,9 +274,9 @@ void GameMain::SpawnEnemy()
 {
 		if (enemy[E_num] == nullptr) {
 			enemy[E_num] = new Enemy(SCREEN_WIDTH / 2);
-			/*	E_num = E_num + 1;*/
+				/*E_num = E_num + 1;*/
 			/*E_num = E_num + 1;
-			if (E_num > 2) {/;l
+			if (E_num > 2) {
 				E_num = 0;
 			}*/
 		}

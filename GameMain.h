@@ -57,6 +57,6 @@ public:
 
 	void SpawnBullet();			// 弾の配列に新しくデータを作成する
 	void SpawnEnemy();
-	void Grid();
+
 };
 
