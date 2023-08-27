@@ -23,12 +23,15 @@ private:
 	int shoot_i;
 	int Eshoot_i;
 	int E_num;
+	int E_numcnt;
 	int WaitTime;
 	// 仮変数
 	int Score;
 	float gridX;
 	float gridY;
 	float Gole_distance;// ゴールまでの距離
+
+	int e_spownCnt;
 public:
 
 	// クラスオブジェクト
@@ -40,7 +43,10 @@ public:
 
 	Bullet* Ebullet[Bullet_Num];
 
+	BulletsSpawner* b_spawner;
 	EnemySpawn* e_spawn;
+
+	GameMain* gamemain;
 	/*BulletsSpawner *B_spawner;*/
 
 	void Game();

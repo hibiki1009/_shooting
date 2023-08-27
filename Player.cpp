@@ -7,7 +7,7 @@
 Player::Player()
 {
 	/*bullet = new Bullet;*/
-	aim_img = LoadGraph("images/UI/AIme.jpg", TRUE);
+	/*aim_img = LoadGraph("images/UI/AIme.jpg", TRUE);*/
 	score = 0;
 	location.x = SCREEN_WIDTH / 2;
 	location.y = SCREEN_HEIGHT - 100;
@@ -54,7 +54,7 @@ void Player::Draw()const
 	DrawCircle(location.x, location.y, 5, 0x000000, TRUE);
 	DrawCircle(aim_x, aim_y, 3, 0xff0000, TRUE);
 	DrawLine(location.x, location.y,aim_x, aim_y, 0xff0000);
-	DrawFormatString(location.x - 20, location.y - 30, 0xff0000, "%d", hp);
+	DrawFormatString(location.x - 20, location.y - 30, 0x000000, "%d", hp);
 	
 }
 

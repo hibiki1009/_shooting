@@ -6,12 +6,10 @@
 class Enemy:public CharaBase
 {
 private:
+	int E_num;
 	int point;
 	bool hit;
 	int color;
-	int f_time;
-	int move;
-	bool forming;
 	int WaitTime;
 
 	int Type;
@@ -19,7 +17,7 @@ private:
 	float Set_PlocationY;
 
 public:
-	Enemy(int _SpownX);
+	Enemy(float _x, float _y,float _r,float _speed,float b_speed,int score,int hp,int E_num);
 	~Enemy();
 
 	// 一定時間経過ごとにプレイヤーの座標に向かおうとする(x軸)

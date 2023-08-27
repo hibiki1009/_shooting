@@ -45,8 +45,6 @@ void Bullet::Update()
 	}
 	// “G‚Ì’e‹N“®
 	if (E_shoot == true) {
-		move = move + 5;
-		location.y = move;
 		Distance_Line_Segment();
 	}
 }

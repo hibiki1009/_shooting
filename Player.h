@@ -12,7 +12,6 @@ class Player:public CharaBase
 private:
 	int HitBullet;		// テスト用
 	int score;
-	int hp;
 	float Speed;			// プレイヤースピード
 	float aim_Speed;		// エイムの感度
 	float Pr;

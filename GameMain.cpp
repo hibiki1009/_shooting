@@ -12,16 +12,20 @@ GameMain::GameMain()
 
 	WaitTime = 0;
 	E_num = 1;
+	e_spownCnt = 0;
 	shoot_i = 1;
 	Eshoot_i = 1;
+	E_numcnt = 1;
 
 	gridX = 80;
 	gridY = 80;
 
 	player = new Player;
-	gimmick = new GIMMICK;
+	gimmick = nullptr;
 	ui = new UI;
-	
+	b_spawner = new BulletsSpawner;
+	e_spawn = new EnemySpawn;
+
 	for (int i = 0; i < Enemy_Num; i++) {
 		enemy[i] = nullptr;
 	}
@@ -55,7 +59,18 @@ void GameMain::Game()
 	
 	
 	player->Update();
+
+	if (gimmick != nullptr) {
+		// 追尾ギミックようにプレイヤーの座標取得
+		gimmick->Set_P_Location(player->GetLocation().x, player->GetLocation().y);
+		// ギミックようにプレイヤーのHpを取得
+		gimmick->Set_P_Hp(player->GetHp());
+		// ギミックのアップデート処理
+		gimmick->KillCircle_Update();
+	}
+
 	
+	// プレイヤーのHP処理
 	if (player->GetHp() < 0) {
 		if (life != 0) {
 			life = life - 1;
@@ -71,6 +86,8 @@ void GameMain::Game()
 			// エネミーの移動
 			enemy[i]->Enemy_move(player->GetLocation().x, player->GetLocation().y);
 			enemy[i]->SetPlayerlocation(player->GetLocation().x, player->GetLocation().y);
+
+			
 			// エネミーのHPを取得、0ならスコア加算
 			if (enemy[i]->Gethp() < 0) {
 				Score = Score + enemy[i]->GetPoint();
@@ -80,6 +97,9 @@ void GameMain::Game()
 	}
 
 		SpawnBullet();
+
+		/*b_spawner->Shoot(gamemain);*/
+
 	for (int i = 0; i < Bullet_Num; i++) {
 		//中身があるならUpdate処理する
 		if (bullet[i] != nullptr) {
@@ -111,7 +131,10 @@ void GameMain::Draw() const
 		DrawLine(gridX * i, 0, gridX * i, SCREEN_HEIGHT, 0xcccccc, TRUE);
 		DrawLine(0, gridY * i, SCREEN_WIDTH, gridY * i, 0xcccccc, TRUE);
 	}
-
+	if (gimmick != nullptr) {
+		// キルサークルギミックのDraw
+		gimmick->KillCircle_Draw();
+	}
 	// 仮
 	DrawFormatString(0, 100, 0x000000, "ノコリ:%fTB", Gole_distance);
 	
@@ -123,6 +146,7 @@ void GameMain::Draw() const
 	for (int i = 0; i < Enemy_Num; i++) {
 		if (enemy[i] != nullptr) {
 			enemy[i]->Draw();
+			
 		}
 	}
 
@@ -145,6 +169,16 @@ void GameMain::Draw() const
 
 int GameMain::HitCheck()
 {
+	// ギミックとプレイヤーの判定処理
+	if (gimmick != nullptr) {
+		if (gimmick->Get_CircleKill() == true && gimmick->HitSphere(player)) {
+			player->Hit(gimmick->Get_Damage());
+		}
+		// ギミックの時間が0なら消す
+		if (gimmick->Get_Circle_time() < 0) {
+			gimmick = nullptr;
+		}
+	}
 
 	// プレイヤーの処理
 	for (int i = 0; i < Bullet_Num; i++) {
@@ -273,13 +307,22 @@ void GameMain::SpawnBullet()
 
 void GameMain::SpawnEnemy()
 {
+	E_num = 5;
 		if (enemy[E_num] == nullptr) {
-			enemy[E_num] = new Enemy(SCREEN_WIDTH / 2);
-				/*E_num = E_num + 1;*/
-			/*E_num = E_num + 1;
-			if (E_num > 2) {
-				E_num = 0;
-			}*/
-		}
+				// エネミーの出現時間に到達したら
+				if (++e_spownCnt > e_spawn->LoadEnemy(E_num).time * FRAMERATE) {
+					//出現したエネミーの情報を全て送信
+					enemy[E_num] = new Enemy(e_spawn->LoadEnemy(E_num).location_x, e_spawn->LoadEnemy(E_num).location_y, e_spawn->LoadEnemy(E_num).radius, e_spawn->LoadEnemy(E_num).speed, e_spawn->LoadEnemy(E_num).bullet_speed, e_spawn->LoadEnemy(E_num).score, e_spawn->LoadEnemy(E_num).hp, E_num);
+					// 敵の番号を見て必要なギミックを割り当てる
+					if (gimmick == nullptr) {
+						gimmick = new GIMMICK(E_num);
+					}
+					/*	E_numcnt = E_numcnt + 1;
+					if (E_num != e_spawn->GetMaxEnemy()) {
+						E_num = E_num + 1;
+					}
+					 e_spownCnt = 0;*/
+				}
+			}
 	}
 

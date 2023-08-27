@@ -82,6 +82,11 @@ EnemySpawn::EnemySpawn()
 		case 7:
 			data[row].hp = atoi(buf);
 			break;
+
+			// oŒ»ŠÔ
+		case 8:
+			data[row].time = atoi(buf);
+			break;
 		}
 		// •¶š—ñ‚ğì‚é	buf‚ğ‚Ü‚½0‚Å–„‚ß‚Ä‚¨‚­
 		memset(buf, 0, sizeof(buf));

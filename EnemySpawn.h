@@ -10,6 +10,7 @@ struct E_NUM
 	float bullet_speed;
 	int score;
 	int hp;
+	int time;
 };
 
 class EnemySpawn
