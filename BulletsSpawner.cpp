@@ -2,12 +2,13 @@
 #include"common.h"
 #include"GameMain.h"
 
-int BulletsSpawner::Shoot(GameMain* gamemain)
-{
-	for (int i = 0; i < Bullet_Num; i++) {
-		if (gamemain->bullet[i] != nullptr) {
-			gamemain->bullet[i]->Update();
-		}
-	}
-	return 0;
-}
+// Gamemain‚É‚Í‘‚©‚È‚¢
+// ƒoƒŒƒbƒg‘¤‚Éî•ñ‚ğ‚Á‚Ä‚¢‚­
+
+//int BulletsSpawner::Shoot(GameMain* gamemain){
+//	for (int j = 0; j < Enemy_Num; j++) {
+//		gamemain->bullet[gamemain->GetShoot()] = new Bullet(gamemain->enemy[j]->GetLocation().x, gamemain->enemy[j]->GetLocation().y,true,gamemain->enemy[j]->getRadian());
+//	}
+//	return 0;
+//
+//}

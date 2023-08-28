@@ -5,6 +5,7 @@
 #include"common.h"
 
 #include"Title.h"
+#include"Ranking.h"
 
 #include"UI.h"
 #include"CharaBase.h"
@@ -47,6 +48,7 @@ public:
 	EnemySpawn* e_spawn;
 
 	GameMain* gamemain;
+	Ranking* ranking;
 	/*BulletsSpawner *B_spawner;*/
 
 	void Game();
@@ -67,5 +69,6 @@ public:
 	void SpawnBullet();			// 弾の配列に新しくデータを作成する
 	void SpawnEnemy();
 
+	int GetShoot();
 };
 

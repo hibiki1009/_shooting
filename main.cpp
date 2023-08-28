@@ -13,10 +13,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	SetMainWindowText("shooting");		// タイトルを設定
 	ChangeWindowMode(true);					// ウィンドウモードで起動
-
+	
 	SetGraphMode(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_COLORBIT);// サイズ
 	SetWindowSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-	CreateFontToHandle(NULL, 20, 3, DX_FONTTYPE_ANTIALIASING);// フォント設定
+	//CreateFontToHandle(NULL, 20, 3, DX_FONTTYPE_ANTIALIASING);// フォント設定
 
 	if (DxLib_Init() == -1) {
 		return -1;
@@ -24,6 +24,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	// 背景色
 	SetBackgroundColor(1000, 1000, 1000);
 	SetDrawScreen(DX_SCREEN_BACK);
+
+	// AbstractSceneの値を持った子クラスTitleをSceneManagerの親クラスにする
 
 	SceneManager scene = (dynamic_cast<AbstractScene*>(new Title()));// 初めのシーンをsceneにキャスト
 
@@ -41,6 +43,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 		ScreenFlip();						// 裏画面の内容を表に表示する
 	}
+	InitFontToHandle();	//全てのフォントデータを削除
+	InitGraph();		//読み込んだ全てのグラフィックデータを削除
+	InitSoundMem();		//読み込んだ全てのサウンドデータを削除
 	DxLib_End();
 	return 0;
 }

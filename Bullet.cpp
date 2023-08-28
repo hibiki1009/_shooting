@@ -14,7 +14,7 @@ Bullet::Bullet(float l_x, float l_y,bool _Enemyshoot,float _Radian)
 	Radian = _Radian;
 	// ターゲットの座標よりAimeの座標が大きいなら
 	// ターゲットの座標
-	location.x = l_x;//当たり判定
+	location.x = l_x;
 	location.y = l_y;
 	move = location.y;
 	moveX = 10;

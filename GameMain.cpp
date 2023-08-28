@@ -6,6 +6,7 @@
 
 GameMain::GameMain()
 {
+	SetDrawBright(255, 255, 255);
 	Gole_distance = 1000;
 	Score = 0;
 	life = 3;
@@ -49,7 +50,8 @@ AbstractScene* GameMain::Update()
 	Gole_distance = Gole_distance - 0.08f;
 	Game();
 	if (life < 1) {
-		return new Title;
+		 return new Ranking(Score);
+		/*return new Title;*/
 	}
 	return this;
 }
@@ -126,15 +128,17 @@ void GameMain::Game()
 
 void GameMain::Draw() const
 {
+	if (gimmick != nullptr) {
+		// キルサークルギミックのDraw
+		gimmick->KillCircle_Draw();
+	}
+
 	// 背景グリッド線
 	for (int i = 0; i <= 16; i++) {
 		DrawLine(gridX * i, 0, gridX * i, SCREEN_HEIGHT, 0xcccccc, TRUE);
 		DrawLine(0, gridY * i, SCREEN_WIDTH, gridY * i, 0xcccccc, TRUE);
 	}
-	if (gimmick != nullptr) {
-		// キルサークルギミックのDraw
-		gimmick->KillCircle_Draw();
-	}
+	
 	// 仮
 	DrawFormatString(0, 100, 0x000000, "ノコリ:%fTB", Gole_distance);
 	
@@ -271,6 +275,8 @@ void GameMain::SpawnBullet()
 			if (Ebullet[Eshoot_i] == nullptr) {
 				Ebullet[Eshoot_i] = new Bullet(enemy[j]->GetLocation().x, enemy[j]->GetLocation().y, true,enemy[j]->getRadian());
 				Eshoot_i = Eshoot_i + 1;
+				Ebullet[Eshoot_i] = new Bullet(enemy[j]->GetLocation().x+30, enemy[j]->GetLocation().y, true, enemy[j]->getRadian());
+				Eshoot_i = Eshoot_i + 1;
 			}
 		}
 
@@ -325,4 +331,9 @@ void GameMain::SpawnEnemy()
 				}
 			}
 	}
+
+int GameMain::GetShoot()
+{
+	return shoot_i;
+}
 

@@ -6,7 +6,7 @@ GIMMICK::GIMMICK(int e_num) {
 	E_num = e_num;
 	waitTime = 0;
 	circle_time = FRAMERATE * 20;
-	radius = 128;
+	radius = 0;
 	Damage = 100;
 	kill = false;
 	// 仮　敵かプレイヤーのlocationとるかも
@@ -19,10 +19,11 @@ GIMMICK::~GIMMICK() {
 }
 
 void GIMMICK::KillCircle_Draw() {
+
 	if (E_num == 5 && circle_time>0) {
 		Spown_circle_time = 0;
-		DrawCircle(location.x, location.y, radius, 0xff0000);
-		DrawFormatString(location.x - radius, location.y - radius-20, 0x000000, "Danger!:%f", circle_time/FRAMERATE);
+		DrawCircle((int)location.x,(int)location.y, radius, 0xff9999);
+		DrawFormatString((int)location.x - radius, (int)location.y - radius-20, 0x000000, "Danger!:%f", circle_time/FRAMERATE);
 	}
 	else {
 		// リスポーン処理
@@ -31,6 +32,12 @@ void GIMMICK::KillCircle_Draw() {
 }
 
 void GIMMICK::KillCircle_Update() {
+
+	if (++waitTime % 3) {
+		if (radius <= 180)
+			radius = radius + 1;
+	}
+
 	--circle_time;
 	if (circle_time < 0.1) {
 		kill = true;
