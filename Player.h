@@ -10,6 +10,7 @@
 class Player:public CharaBase
 {
 private:
+	int Waittime;
 	int HitBullet;		// テスト用
 	int score;
 	float Speed;			// プレイヤースピード
@@ -43,6 +44,7 @@ public:
 	void Aiming();
 	// Playerの移動に関する処理
 	void PlayerMove();
+	bool shoot();
 	/*void Bullet_Move();*/
 
 	float GetAime_x();

@@ -21,17 +21,17 @@ void Enemy::Update()
 {
 	printfDx("%d", E_num);
 	// 敵がボスだったら
-	if (E_num == 5) {
+	if (E_num == 14) {
 		if (location.y < SCREEN_HEIGHT/2) {
 			location.y++;
 		}
-	}else{
-		
-	}
-	// ボス以外なら
-	if (location.y < SCREEN_HEIGHT+100 && E_num != 5) {
+	}else if(location.y < SCREEN_HEIGHT+100) {
 		location.y++;
 	}
+	// ボス以外なら
+	/*if (location.y < SCREEN_HEIGHT+100 && E_num != 5) {
+		location.y++;
+	}*/
 }
 
 void Enemy::Draw()const
@@ -61,6 +61,11 @@ void Enemy::Enemy_move(float _x, float _y) {
 void Enemy::SetPlayerlocation(float _x,float _y) {
 	Set_PlocationX = _x;
 	Set_PlocationY = _y;
+}
+
+void Enemy::Sethp(int damage)
+{
+	hp = hp - damage;
 }
 
 float Enemy::getRadian()

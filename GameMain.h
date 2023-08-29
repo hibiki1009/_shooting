@@ -23,6 +23,8 @@ private:
 	int life;				// 残機
 	int shoot_i;
 	int Eshoot_i;
+	int E_cnt;
+
 	int E_num;
 	int E_numcnt;
 	int WaitTime;
@@ -42,6 +44,7 @@ public:
 	UI* ui;
 	Bullet* bullet[Bullet_Num];
 
+	// 敵一人一人が900発持ってる
 	Bullet* Ebullet[Bullet_Num];
 
 	BulletsSpawner* b_spawner;

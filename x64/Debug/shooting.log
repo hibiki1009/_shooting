@@ -1,6 +1,11 @@
-﻿  BulletsSpawner.cpp
-C:\C++授業\_shooting\common.h(1,1): warning C4828: オフセット 0x386 から始まる、現在のソースの文字セット (コードページ 932) では使用できない文字がファイルに含まれています。
-  main.cpp
-C:\C++授業\_shooting\common.h(1,1): warning C4828: オフセット 0x386 から始まる、現在のソースの文字セット (コードページ 932) では使用できない文字がファイルに含まれています。
+﻿  GIMMICK.cpp
+C:\C++授業\_shooting\common.h(1,1): warning C4828: オフセット 0x3db から始まる、現在のソースの文字セット (コードページ 932) では使用できない文字がファイルに含まれています。
+  GameMain.cpp
+C:\C++授業\_shooting\common.h(1,1): warning C4828: オフセット 0x3db から始まる、現在のソースの文字セット (コードページ 932) では使用できない文字がファイルに含まれています。
+C:\C++授業\_shooting\GameMain.cpp(141,32): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\GameMain.cpp(141,18): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\GameMain.cpp(142,46): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\GameMain.cpp(142,21): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\GameMain.cpp(184,30): warning C4804: '<': 演算中の 'bool' 型の使用方法が安全ではありません
   コードを生成中...
   shooting.vcxproj -> C:\C++授業\_shooting\x64\Debug\shooting.exe

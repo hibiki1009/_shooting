@@ -6,6 +6,7 @@
 // 標準の座標はコンストラクタで一回だけ取る
 Player::Player()
 {
+	Waittime = 0;
 	/*bullet = new Bullet;*/
 	/*aim_img = LoadGraph("images/UI/AIme.jpg", TRUE);*/
 	score = 0;
@@ -125,6 +126,14 @@ void Player::PlayerMove()
 	}
 
 }
+
+bool Player::shoot() {
+	if (++Waittime % 5 == 0) {
+		return true;
+	}
+	return false;
+}
+
 int Player::GetHp() {
 	return hp;
 }

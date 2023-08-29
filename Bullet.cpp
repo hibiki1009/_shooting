@@ -80,3 +80,13 @@ float Bullet::Distance_Line_Segment()
 	return 0.0f;
 }
 
+float Bullet::GetLocationX()
+{
+	return location.x;
+}
+
+float Bullet::GetLocationY()
+{
+	return location.y;
+}
+

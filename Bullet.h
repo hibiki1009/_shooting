@@ -19,10 +19,14 @@ public:
 	void Update();
 	void Draw();
 	int GetDamage();
-	void SET_P_Distanse(float _x,float _y);
 	virtual float inputX();
 	virtual float inputY();
 	float Distance_Line_Segment();
+
+	float GetLocationX();
+	float GetLocationY();
+
+
 
 private:
 	float Radian;
