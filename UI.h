@@ -23,7 +23,7 @@ private:
 	int hp_Img2;
 
 	int hp_mng;
-
+	int font;
 
 	float x, y;
 };

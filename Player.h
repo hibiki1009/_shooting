@@ -52,5 +52,7 @@ public:
 
 	float getRadian();
 	int GetHp();
+	void PlayerInit();			// ƒvƒŒƒCƒ„[‚Ì‰Šú‰»
+
 };
 

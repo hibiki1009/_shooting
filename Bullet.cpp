@@ -5,12 +5,12 @@
 #include<math.h>
 
 
-Bullet::Bullet(float l_x, float l_y,bool _Enemyshoot,float _Radian)
+Bullet::Bullet(float l_x, float l_y,bool _Enemyshoot,float _Radian,float b_speed)
 {
 	firing = FALSE;
 	E_shoot = _Enemyshoot;
 	// スポーンした時のみ合わせればいいからコンストラクタでOK
-	damage = 1;
+	damage = 5;
 	Radian = _Radian;
 	// ターゲットの座標よりAimeの座標が大きいなら
 	// ターゲットの座標
@@ -21,7 +21,7 @@ Bullet::Bullet(float l_x, float l_y,bool _Enemyshoot,float _Radian)
 	moveY = 10;
 	radius = 5;
 	WaitTime = 0;
-	speed = 10;
+	Bullet_speed = b_speed;
 	// エイムの座標を取得
 }
 
@@ -39,13 +39,18 @@ float Bullet::inputY() {
 
 void Bullet::Update()
 {
-
-	if (E_shoot == false) {
-		Distance_Line_Segment();
-	}
-	// 敵の弾起動
-	if (E_shoot == true) {
-		Distance_Line_Segment();
+	if (location.x > -radius * 2 && location.x < SCREEN_WIDTH + radius * 2) {
+		if (location.y > -radius * 2 && location.y < SCREEN_HEIGHT + radius * 2) {
+			if (E_shoot == false) {
+				color = 0x00ff55;
+				Distance_Line_Segment();
+			}
+			// 敵の弾起動
+			if (E_shoot == true) {
+				color = 0xff0000;
+				Distance_Line_Segment();
+			}
+		}
 	}
 }
 
@@ -55,7 +60,7 @@ void Bullet::Draw()
 	/*DrawFormatString(100, 100,0x000000,"%f", getRadian());*/
 	// プレイヤー操作設定
 	/*DrawCircle(location.x + 5, location.y + 5, radius, 0xcccccc, TRUE);*/
-	DrawCircle(location.x, location.y, radius, 0xff0000, TRUE);
+	DrawCircle(location.x, location.y, radius, color, TRUE);
 }
 
 int Bullet::GetDamage()
@@ -67,8 +72,8 @@ float Bullet::Distance_Line_Segment()
 {
 	
 		float radian = Radian;
-		location.x += cos(radian) * speed;
-		location.y += sin(radian) * speed;
+		location.x += cos(radian) * Bullet_speed;
+		location.y += sin(radian) * Bullet_speed;
 	/*else {
 		++ WaitTime;
 		location.x += cos(WaitTime) * speed;

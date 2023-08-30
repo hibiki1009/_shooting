@@ -8,6 +8,8 @@ Enemy::Enemy(float _x, float _y, float _r, float _speed, float b_speed, int scor
 	E_num = _E_num;
 	hp = _hp;
 	speed = _speed;
+	bullet_speed = b_speed;
+
 	location.x = _x;
 	location.y = _y;
 	radius = _r;
@@ -20,18 +22,24 @@ Enemy::~Enemy()
 void Enemy::Update()
 {
 	printfDx("%d", E_num);
-	// 敵がボスだったら
-	if (E_num == 14) {
-		if (location.y < SCREEN_HEIGHT/2) {
-			location.y++;
+	// 敵が偶数だったら
+	
+		if (E_num % 2 == 0&& E_num <= 5) {
+			if (location.x > 100) {
+				location.y = location.y + speed/2;
+				location.x = location.x - speed;
+			}
 		}
-	}else if(location.y < SCREEN_HEIGHT+100) {
-		location.y++;
+		// 奇数なら
+		if (E_num % 2 != 0 && E_num <= 5) {
+			if (location.x < SCREEN_WIDTH - 100) {
+				location.y = location.y + speed/2;
+				location.x = location.x + speed;
+			}
 	}
-	// ボス以外なら
-	/*if (location.y < SCREEN_HEIGHT+100 && E_num != 5) {
-		location.y++;
-	}*/
+		if (E_num > 5) {
+			location.y = location.y + speed / 2;
+		}
 }
 
 void Enemy::Draw()const
@@ -46,8 +54,9 @@ void Enemy::Draw()const
 
 
 void Enemy::Enemy_move(float _x, float _y) {
-	//if (++WaitTime %3==0) {
-		/*if (_x < location.x) {
+	if (E_num > 5) {
+		if (_x < location.x)
+		{
 			location.x = location.x - 1;
 		}
 		else {
@@ -55,8 +64,8 @@ void Enemy::Enemy_move(float _x, float _y) {
 		}
 		if (_x == location.x) {
 			location.x = location.x;
-		}*/
-
+		}
+	}
 }
 void Enemy::SetPlayerlocation(float _x,float _y) {
 	Set_PlocationX = _x;
@@ -77,7 +86,7 @@ float Enemy::getRadian()
 }
 
 bool Enemy::shoot() {
-	if (++WaitTime % 11 == 0) {
+	if (++WaitTime % 15 == 0) {
 		return true;
 	}
 	return false;

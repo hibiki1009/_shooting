@@ -30,8 +30,9 @@ private:
 	int WaitTime;
 	// ‰¼•Ï”
 	int Score;
-	float gridX;
-	float gridY;
+	int gridX;
+	int gridY;
+	int Gr_waittime;
 	float Gole_distance;// ƒS[ƒ‹‚Ü‚Å‚Ì‹——£
 
 	int e_spownCnt;
@@ -44,8 +45,7 @@ public:
 	UI* ui;
 	Bullet* bullet[Bullet_Num];
 
-	// “Gˆêlˆêl‚ª900”­‚Á‚Ä‚é
-	Bullet* Ebullet[Bullet_Num];
+	Bullet* Ebullet[E_Bullet_Num];
 
 	BulletsSpawner* b_spawner;
 	EnemySpawn* e_spawn;

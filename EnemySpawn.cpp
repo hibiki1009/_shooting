@@ -22,7 +22,6 @@ EnemySpawn::EnemySpawn()
 	fp = FileRead_open("EnemyData/Enemys_Data.csv");
 
 	// 1行目を無視する ファイルから１文字取得するための変数
-	// 1行目には\nがないので無視することになる
 	while (FileRead_getc(fp) != '\n');
 
 	// データの読み込み このwhile２つは無限ループ

@@ -30,6 +30,9 @@ public:
 	// •`‰æ‚ÉŠÖ‚·‚é‚±‚Æ‚ğÀ‘•‚·‚é
 	virtual void Draw()const override;
 private:
+
+	int file;
+	int row;						// csvƒtƒ@ƒCƒ‹‚Ì—ñ‚Ì”(“Ç‚İ‚Ü‚ê‚é“G‚Ì—Ê)
 	RankingData ranking_data[RANKING_DATA];
 	int g_Score;
 };

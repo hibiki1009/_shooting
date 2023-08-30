@@ -10,7 +10,8 @@
 #define WIDTH  16				// ブロック配列横
 #define STAGE  5				// ステージ配列
 
-constexpr auto Bullet_Num = 900;
+constexpr auto Bullet_Num = 300;
+constexpr auto E_Bullet_Num = 900;
 constexpr auto Enemy_Num = 50;
 
 // memo

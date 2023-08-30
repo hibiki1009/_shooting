@@ -11,7 +11,7 @@ GIMMICK::GIMMICK(int e_num) {
 	kill = false;
 	// 仮　敵かプレイヤーのlocationとるかも
 	location.x = SCREEN_WIDTH/2;
-	location.y = SCREEN_HEIGHT/2;
+	location.y = 0;
 }
 
 GIMMICK::~GIMMICK() {
@@ -20,7 +20,7 @@ GIMMICK::~GIMMICK() {
 
 void GIMMICK::KillCircle_Draw() {
 
-	if (E_num == 5 && circle_time>0) {
+	if (circle_time>0) {
 		/*Spown_circle_time = 0;*/
 		DrawCircle((int)location.x,(int)location.y, radius, 0xff9999);
 		DrawFormatString((int)location.x - radius, (int)location.y - radius-20, 0x000000, "Danger!:%f", circle_time/FRAMERATE);

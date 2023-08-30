@@ -7,8 +7,6 @@
 Player::Player()
 {
 	Waittime = 0;
-	/*bullet = new Bullet;*/
-	/*aim_img = LoadGraph("images/UI/AIme.jpg", TRUE);*/
 	score = 0;
 	location.x = SCREEN_WIDTH / 2;
 	location.y = SCREEN_HEIGHT - 100;
@@ -17,10 +15,10 @@ Player::Player()
 	aim_y = SCREEN_HEIGHT - 100;
 
 	radius = 5;
-
+	bullet_speed = 10;
 	Speed = 5;
 	aim_Speed = 100;
-	hp = 50;
+	hp = 20000;
 }
 
 Player::~Player()
@@ -124,6 +122,7 @@ void Player::PlayerMove()
 	{
 		location.y = SCREEN_HEIGHT - 10;
 	}
+	
 
 }
 
@@ -136,6 +135,13 @@ bool Player::shoot() {
 
 int Player::GetHp() {
 	return hp;
+}
+
+void Player::PlayerInit()
+{
+	location.x = SCREEN_WIDTH / 2;
+	location.y = SCREEN_HEIGHT - 100;
+	hp = 20;
 }
 
 float Player::GetAime_x()

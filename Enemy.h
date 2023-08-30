@@ -22,10 +22,10 @@ public:
 
 	// 一定時間経過ごとにプレイヤーの座標に向かおうとする(x軸)
 	void Enemy_move(float _x,float _y);
-	void Enemy_bulletmove(float _x, float _y);
+
 	int Gethp();
-	
 	int GetPoint();
+
 	bool shoot();
 	void Update() override;
 	void Draw()const override;

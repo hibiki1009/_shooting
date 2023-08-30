@@ -14,7 +14,7 @@ class Bullet:public SphereCollider
 
 public:
 
-	Bullet(float l_x, float l_y, bool _Enemyshoot, float _Radian);
+	Bullet(float l_x, float l_y, bool _Enemyshoot, float _Radian, float b_speed);
 	~Bullet();
 	void Update();
 	void Draw();
@@ -38,8 +38,8 @@ private:
 	float angle;			// 角度
 	float acceleration;		// 速度の変化量
 	float angulVelocity;	// 角度の変化量
-	float speed;			// スピード
-	
+	float Bullet_speed;			// スピード
+	int color;
 
 	bool firing;
 	bool E_shoot;
