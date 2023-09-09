@@ -43,9 +43,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 		ScreenFlip();						// 裏画面の内容を表に表示する
 	}
-	InitFontToHandle();	//全てのフォントデータを削除
-	InitGraph();		//読み込んだ全てのグラフィックデータを削除
-	InitSoundMem();		//読み込んだ全てのサウンドデータを削除
 	DxLib_End();
 	return 0;
 }

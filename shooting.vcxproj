@@ -147,7 +147,9 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemySpawn.h" />
     <ClInclude Include="FPS.h" />
+    <ClInclude Include="GameClear.h" />
     <ClInclude Include="GameMain.h" />
+    <ClInclude Include="GameOver.h" />
     <ClInclude Include="GIMMICK.h" />
     <ClInclude Include="NwaySpawner.h" />
     <ClInclude Include="PAD_INPUT.h" />
@@ -166,7 +168,9 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemySpawn.cpp" />
     <ClCompile Include="FPS.cpp" />
+    <ClCompile Include="GameClear.cpp" />
     <ClCompile Include="GameMain.cpp" />
+    <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="GIMMICK.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NwaySpawner.cpp" />

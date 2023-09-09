@@ -42,7 +42,7 @@ void Bullet::Update()
 	if (location.x > -radius * 2 && location.x < SCREEN_WIDTH + radius * 2) {
 		if (location.y > -radius * 2 && location.y < SCREEN_HEIGHT + radius * 2) {
 			if (E_shoot == false) {
-				color = 0x00ff55;
+				color = 0xdd0000;
 				Distance_Line_Segment();
 			}
 			// “G‚Ì’e‹N“®

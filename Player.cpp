@@ -18,7 +18,7 @@ Player::Player()
 	bullet_speed = 10;
 	Speed = 5;
 	aim_Speed = 100;
-	hp = 20000;
+	hp = 2000;
 }
 
 Player::~Player()
@@ -127,7 +127,8 @@ void Player::PlayerMove()
 }
 
 bool Player::shoot() {
-	if (++Waittime % 5 == 0) {
+	if (++Waittime % 2 == 0) {
+
 		return true;
 	}
 	return false;

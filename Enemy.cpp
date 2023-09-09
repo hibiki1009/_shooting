@@ -25,20 +25,26 @@ void Enemy::Update()
 	// “G‚ª‹ô”‚¾‚Á‚½‚ç
 	
 		if (E_num % 2 == 0&& E_num <= 5) {
-			if (location.x > 100) {
-				location.y = location.y + speed/2;
+			if (location.x > +100) {
+				location.y = location.y + (float)speed/2;
 				location.x = location.x - speed;
+			}
+			else {
+				location.x = location.x - (float)speed / 10;
 			}
 		}
 		// Šï”‚È‚ç
 		if (E_num % 2 != 0 && E_num <= 5) {
 			if (location.x < SCREEN_WIDTH - 100) {
-				location.y = location.y + speed/2;
+				location.y = location.y + (float)speed/2;
 				location.x = location.x + speed;
+			}
+			else {
+				location.x = location.x + (float)speed / 10;
 			}
 	}
 		if (E_num > 5) {
-			location.y = location.y + speed / 2;
+			location.y = location.y + speed ;
 		}
 }
 
@@ -86,7 +92,7 @@ float Enemy::getRadian()
 }
 
 bool Enemy::shoot() {
-	if (++WaitTime % 15 == 0) {
+	if (++WaitTime % 5 == 0) {
 		return true;
 	}
 	return false;

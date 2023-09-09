@@ -1,6 +1,56 @@
-﻿  GameMain.cpp
+﻿  AbstractScene.cpp
+  Bullet.cpp
+C:\C++授業\_shooting\Bullet.cpp(19,17): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\Bullet.cpp(33,66): warning C4244: 'return': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\Bullet.cpp(37,66): warning C4244: 'return': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\Bullet.cpp(63,33): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\Bullet.cpp(63,21): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\Bullet.cpp(75,29): warning C4244: '+=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\Bullet.cpp(76,29): warning C4244: '+=': 'double' から 'float' への変換です。データが失われる可能性があります。
+  BulletsSpawner.cpp
+  Enemy.cpp
+C:\C++授業\_shooting\Enemy.cpp(15,11): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\Enemy.cpp(55,45): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\Enemy.cpp(55,29): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\Enemy.cpp(57,33): warning C4244: '引数': 'const float' から 'int' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\Enemy.cpp(57,21): warning C4244: '引数': 'const float' から 'int' への変換です。データが失われる可能性があります。
+  EnemySpawn.cpp
+C:\C++授業\_shooting\EnemySpawn.cpp(52,31): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\EnemySpawn.cpp(57,31): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\EnemySpawn.cpp(62,27): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\EnemySpawn.cpp(67,26): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\EnemySpawn.cpp(72,33): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+  FPS.cpp
+  GIMMICK.cpp
+  GameMain.cpp
+C:\C++授業\_shooting\GameMain.cpp(171,66): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\GameMain.cpp(171,37): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\GameMain.cpp(172,69): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\GameMain.cpp(172,38): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+  GameOver.cpp
+C:\C++授業\_shooting\GameOver.cpp(17,50): warning C4805: '==': 演算中の 'int' 型と 'bool' 型の混用は安全ではありません
+  NwaySpawner.cpp
+  Player.cpp
+C:\C++授業\_shooting\Player.cpp(53,33): warning C4244: '引数': 'const float' から 'int' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\Player.cpp(53,21): warning C4244: '引数': 'const float' から 'int' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\Player.cpp(54,20): warning C4244: '引数': 'const float' から 'int' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\Player.cpp(54,13): warning C4244: '引数': 'const float' から 'int' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\Player.cpp(55,41): warning C4244: '引数': 'const float' から 'int' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\Player.cpp(55,34): warning C4244: '引数': 'const float' から 'int' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\Player.cpp(55,31): warning C4244: '引数': 'const float' から 'int' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\Player.cpp(55,19): warning C4244: '引数': 'const float' から 'int' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\Player.cpp(56,47): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\Player.cpp(56,30): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\Player.cpp(62,66): warning C4244: 'return': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\Player.cpp(66,66): warning C4244: 'return': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\Player.cpp(71,66): warning C4244: 'return': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\Player.cpp(76,66): warning C4244: 'return': 'double' から 'float' への変換です。データが失われる可能性があります。
+  Title.cpp
+C:\C++授業\_shooting\Title.cpp(166,66): warning C4244: 'return': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\C++授業\_shooting\Title.cpp(170,66): warning C4244: 'return': 'double' から 'float' への変換です。データが失われる可能性があります。
+  main.cpp
   コード生成しています。
-  3 of 51 functions ( 5.9%) were compiled, the rest were copied from previous compilation.
+  10 of 114 functions ( 8.8%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   コード生成が終了しました。

@@ -7,7 +7,7 @@
 GameMain::GameMain()
 {
 	SetDrawBright(255, 255, 255);
-	Gole_distance = 1000;
+	Gole_distance = 500;
 	Score = 0;
 	life = 3;
 
@@ -26,6 +26,7 @@ GameMain::GameMain()
 	ui = new UI;
 	b_spawner = new BulletsSpawner;
 	e_spawn = new EnemySpawn;
+	setumei = true;
 
 	for (int i = 0; i < Enemy_Num; i++) {
 		enemy[i] = nullptr;
@@ -47,16 +48,22 @@ GameMain::~GameMain()
 
 AbstractScene* GameMain::Update()
 {
-	
+	if (++WaitTime > FRAMERATE * 10) {
+		setumei = false;
+	}
+
 		gridY = gridY + 10;
 	if (gridY > SCREEN_HEIGHT+100) {
 		gridY = 0;
 	}
 
-	Gole_distance = Gole_distance - 0.08f;
+	Gole_distance = Gole_distance - 0.1f;
+	if (Gole_distance < 0) {
+		return new Ranking(Score, true);
+	}
 	Game();
 	if (life < 1) {
-		 return new Ranking(Score);
+		return new GameOver;
 	}
 	return this;
 }
@@ -78,7 +85,7 @@ void GameMain::Game()
 
 	
 	// プレイヤーのHP処理
-	if (player->GetHp() < 0) {
+	if (player->GetHp() <= 0) {
 			life = life - 1;
 			// プレイヤーの初期化
 			player->PlayerInit();
@@ -107,7 +114,7 @@ void GameMain::Game()
 			}
 
 			// エネミーのHPを取得、0ならスコア加算
-			if (enemy[i]->Gethp() < 0) {
+			if (enemy[i]->Gethp() <= 0) {
 				// エリア外による強制退場でないならスコア加算
 				if (enemy[i]->GetLocation().y < SCREEN_HEIGHT) {
 					Score = Score + enemy[i]->GetPoint();
@@ -137,15 +144,17 @@ void GameMain::Game()
 	HitCheck();
 
 	// UIセット関数
+	SetFontSize(20);
 	ui->SetScore(Score);
 	ui->SetLife(life);
 	ui->SetHp(player->GetHp());
 	ui->SetP_location(player->GetLocation().x, player->GetLocation().y);
+	clsDx();
 }
 
 void GameMain::Draw() const
 {
-
+	
 	if (gimmick != nullptr) {
 		// キルサークルギミックのDraw
 		gimmick->KillCircle_Draw();
@@ -157,9 +166,14 @@ void GameMain::Draw() const
 	}
 		DrawBox(0, gridY, gridY+SCREEN_WIDTH, gridY+5, 0xcccccc,true);
 
-	// 仮
-	DrawFormatString(0, 100, 0x000000, "ノコリ:%fTB", Gole_distance);
-	
+	SetFontSize(20);
+	if (setumei == true) {
+		DrawString(player->GetLocation().x-100, player->GetLocation().y-70, "左スティックで移動 : 右スティックで狙いを定める", 0xff0000);
+		DrawString(player->GetLocation().x - 100, player->GetLocation().y - 50, "RBで球を発射する", 0xff0000);
+	}
+	DrawFormatString(0, 100, 0xff0000, "ノコリ:%f TB", Gole_distance);
+	clsDx();
+
 	ui->Draw();
 	if (player != nullptr) {
 		player->Draw();
@@ -252,80 +266,69 @@ void GameMain::SpawnBullet()
 			// 中身がないなら新しいplayer座標をもったBulletクラスを代入する
 			if (bullet[shoot_i] == nullptr) {
 
-				bullet[shoot_i] = new Bullet(player->GetLocation().x, player->GetLocation().y, false, player->getRadian(),player->GetBullet_speed());
+				bullet[shoot_i] = new Bullet(player->GetLocation().x, player->GetLocation().y, false, player->getRadian(), player->GetBullet_speed());
 				shoot_i = shoot_i + 1;
 			}
 		}
-		// 1～300をnullにする
-		if (shoot_i > 200) {
-			for (int i = 1; i <= 100; i++)
-			{
-				if (bullet[i] != nullptr) {
+		for (int i = 0; i <= Bullet_Num; i++)
+		{
+			if (bullet[i] != nullptr) {
+				if (bullet[i]->GetLocationX() > SCREEN_WIDTH) {
 					bullet[i] = nullptr;
 				}
 			}
-		}
-
-		// 301～600をnullにする
-		if (shoot_i <= 100) {
-			for (int i = 101; i <= 200; i++)
-			{
-				if (bullet[i] != nullptr) {
+			if (bullet[i] != nullptr) {
+				if (bullet[i]->GetLocationX() < 0) {
 					bullet[i] = nullptr;
 				}
 			}
-		}
-		// 601～900をnullにする
-		if (shoot_i > 100 && 200 >= shoot_i) {
-			for (int i = 201; i <= 300; i++)
-			{
-				if (bullet[i] != nullptr) {
+			if (bullet[i] != nullptr) {
+				if (bullet[i]->GetLocationY() > SCREEN_HEIGHT) {
+					bullet[i] = nullptr;
+				}
+			}
+			if (bullet[i] != nullptr) {
+				if (bullet[i]->GetLocationY() < 0) {
 					bullet[i] = nullptr;
 				}
 			}
 		}
 	}
 	// ここからエネミー
-	for (int j = 0; j < Enemy_Num; j++){
-	// エネミーがnullでない
-	if(enemy[j] != nullptr) {
-		if (enemy[j]->shoot() == true) {
-			if (Ebullet[Eshoot_i] == nullptr) 
-				Ebullet[Eshoot_i] = new Bullet(enemy[j]->GetLocation().x, enemy[j]->GetLocation().y, true,enemy[j]->getRadian(), enemy[j]->GetBullet_speed());
+	for (int j = 0; j < Enemy_Num; j++) {
+		// エネミーがnullでない
+		if (enemy[j] != nullptr) {
+			if (enemy[j]->shoot() == true) {
+				if (Ebullet[Eshoot_i] == nullptr)
+					Ebullet[Eshoot_i] = new Bullet(enemy[j]->GetLocation().x, enemy[j]->GetLocation().y, true, enemy[j]->getRadian(), enemy[j]->GetBullet_speed());
 				Eshoot_i = Eshoot_i + 1;
 			}
 		}
-
-		
-		if (Eshoot_i > 600) {
-			for (int i = 1; i <= 300; i++)
-			{
-				if (Ebullet[i] != nullptr) {
-					Ebullet[i] = nullptr;
-				}
+	}
+	for (int i = 0; i <= Bullet_Num; i++)
+	{
+		if (Ebullet[i] != nullptr) {
+			if (Ebullet[i]->GetLocationX() > SCREEN_WIDTH) {
+				Ebullet[i] = nullptr;
 			}
 		}
-
-		
-		if (Eshoot_i <= 300) {
-			for (int i = 301; i <= 600; i++)
-			{
-				if (Ebullet[i] != nullptr) {
-					Ebullet[i] = nullptr;
-				}
+		if (Ebullet[i] != nullptr) {
+			if (Ebullet[i]->GetLocationX() < 0) {
+				Ebullet[i] = nullptr;
 			}
 		}
-		
-		if (Eshoot_i > 300 && 600 >= Eshoot_i) {
-			for (int i = 601; i <= 900; i++)
-			{
-				if (Ebullet[i] != nullptr) {
-					Ebullet[i] = nullptr;
-				}
+		if (Ebullet[i] != nullptr) {
+			if (Ebullet[i]->GetLocationY() > SCREEN_HEIGHT) {
+				Ebullet[i] = nullptr;
 			}
 		}
+		if (Ebullet[i] != nullptr) {
+			if (Ebullet[i]->GetLocationY() < 0) {
+				Ebullet[i] = nullptr;
+			}
 		}
 	}
+}
 
 void GameMain::SpawnEnemy()
 {
@@ -335,7 +338,7 @@ void GameMain::SpawnEnemy()
 					//出現したエネミーの情報を全て送信
 					enemy[E_num] = new Enemy(e_spawn->LoadEnemy(E_num).location_x, e_spawn->LoadEnemy(E_num).location_y, e_spawn->LoadEnemy(E_num).radius, e_spawn->LoadEnemy(E_num).speed, e_spawn->LoadEnemy(E_num).bullet_speed, e_spawn->LoadEnemy(E_num).score, e_spawn->LoadEnemy(E_num).hp, E_num);
 					// 敵の番号を見て必要なギミックを割り当てる 今のところ全員
-					if (gimmick == nullptr && E_num == 3) {
+					if (gimmick == nullptr && E_num == 7) {
 						gimmick = new GIMMICK(E_num);
 					}
 						// エネミーの数がマックス値でないなら

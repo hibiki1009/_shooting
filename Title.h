@@ -43,7 +43,6 @@ private:
 	int menu_font;
 
 	bool enter_flg;
-	int test;
 public:
 	// コンストラクタ
 	Title();

@@ -6,6 +6,7 @@
 
 #include"Title.h"
 #include"Ranking.h"
+#include"GameOver.h"
 
 #include"UI.h"
 #include"CharaBase.h"
@@ -36,6 +37,7 @@ private:
 	float Gole_distance;// ゴールまでの距離
 
 	int e_spownCnt;
+	bool setumei;
 public:
 
 	// クラスオブジェクト
@@ -50,8 +52,7 @@ public:
 	BulletsSpawner* b_spawner;
 	EnemySpawn* e_spawn;
 
-	GameMain* gamemain;
-	Ranking* ranking;
+
 	/*BulletsSpawner *B_spawner;*/
 
 	void Game();

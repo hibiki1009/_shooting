@@ -1,18 +1,23 @@
 #include "Ranking.h"
 #include"DxLib.h"
+#include"PAD_INPUT.h"
+#include"Title.h"
 
 
 // ランキングデータ変数宣言
 struct RankingData g_Ranking[10];
 
-Ranking::Ranking(int _score)
+Ranking::Ranking(int _score,bool _mode)
 {
+	Waittime = 0;
+	mode = _mode;
 	SetDrawBright(255, 255, 255);
 	g_Score = _score;
 }
 
 Ranking::~Ranking()
 {
+	clsDx();
 
 }
 
@@ -57,14 +62,15 @@ void Ranking::InputRanking(void)
 	SetFontSize(20);
 
 	// 名前入力指示文字列の描画
-	DrawString(150, 240, "ランキングに登録します", 0x000000);
-	DrawString(150, 270, "名前を英字で入力してください", 0x000000);
+	DrawString(700, 240, "ランキングに登録します", 0x000000);
+	DrawString(700, 270, "名前を英字で入力してください", 0x000000);
 
 	// 名前の入力
-	DrawString(150, 310, "> ", 0xFFFFFF);
-	DrawBox(160, 305, 300, 335, 0x000055, TRUE);
-	if (KeyInputSingleCharString(170, 310, 10, g_Ranking[9].name, FALSE) == 1) {
+	DrawString(650, 310, "> ", 0xFFFFFF);
+	DrawBox(730, 305, 870, 335, 0x000055, TRUE);
+	if (KeyInputSingleCharString(740, 310, 10, g_Ranking[9].name, FALSE) == 1) {
 		g_Ranking[9].score = g_Score;	// ランキングデータの１０番目にスコアを登録
+
 	}
 }
 
@@ -87,7 +93,7 @@ int Ranking::SaveRanking(void)
 
 	//ファイルクローズ
 	fclose(fp);
-
+	mode = false;
 	return 0;
 }
 
@@ -95,10 +101,20 @@ int Ranking::SaveRanking(void)
 
 AbstractScene* Ranking::Update()
 {
-	
+	if (mode == true) {
 		InputRanking();
 		SortRanking();		// ランキング並べ替え
 		SaveRanking();		// ランキングデータの保存
+		if (PAD_INPUT::GetKeyFlg(XINPUT_BUTTON_B) == true) {
+			mode = false;
+		}
+	}
+	else {
+		if (PAD_INPUT::GetKeyFlg(XINPUT_BUTTON_B) == true) {
+			return new Title;
+		}
+	}
+
 	return this;
 }
 
@@ -123,5 +139,5 @@ void Ranking::Draw() const
 		DrawFormatString(80, 170 + i * 25, 0x000000, "%2d   %10s     %10d",
 			g_Ranking[i].no, g_Ranking[i].name, g_Ranking[i].score);
 	}
-	clsDx();
+	DrawString(500, 600, "Bボタンで戻る", 0x000000);
 }

@@ -28,7 +28,6 @@ Title::Title()
 	cursorY = 420;
 
 
-	test = LoadGraph("images/Title/error.avi");
 	// タイトル画面アニメーション
 	T_images[0] = LoadGraph("images/Title/Title1.PNG", false);
 	T_images[1] = LoadGraph("images/Title/Title2.PNG", false);
@@ -99,16 +98,17 @@ AbstractScene* Title::Update()
 
 		case Title::MENU::HELP:
 			printfDx("未実装な機能です。\n");
+			return new Title;
 			break;
 
 		case Title::MENU::RANKING:
 			if (bright < 0) {
-				return new Ranking(0);
+				return new Ranking(0,false);
 			}
 			break;
 
 		case Title::MENU::EXIT:
-			printfDx("未実装な機能です。\n");
+			return nullptr;
 			break;
 		}
 	}
